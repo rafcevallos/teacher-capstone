@@ -1,0 +1,42 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static '/navbar.css' %}">
+
+<nav>
+    <ul class="nav_ul">
+        {% if user.is_authenticated %}
+        <li><a href="{% url 'readapi:index' %}">Home</a></li>
+        <li>
+            <form action="#" class="search_bar">
+                <input type="text" id="search" name="search_terms">
+                <input type="submit" value="Search">
+            </form>
+        </li>
+
+        <li><a href="#">Books</a></li>
+        <li><a href="#">Students</a></li>
+        <li><a href="#">Conference Log</a></li>
+        <li><a href="#">Skills</a></li>
+
+        <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn">Reading Levels</a>
+            <div class="dropdown_content">
+                <a href="#">Level A</a>
+                <a href="#">Level B</a>
+                <a href="#">Level C</a>
+                <a href="#">Level D</a>
+                <a href="#">Level E</a>
+                <a href="#">Level F</a>
+            </div>
+        </li>
+
+        <li><a href="#">My Profile</a></li>
+        <li><a href="{% url 'readapi:logout' %}">Logout</a></li>
+        <li class="rick"><a href="https://www.dafk.net/what/"> Hello, {{ user.username }}!</a></li>
+    </ul>
+    {% else %}
+    <li><a href="{% url 'readapi:login' %}">Login</a></li>
+    <li><a href="{% url 'readapi:register' %}">Register</a></li>
+    </div>
+    {% endif %}
+</nav>

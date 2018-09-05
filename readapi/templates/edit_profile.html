@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Profile</title>
+</head>
+
+{% block main %}
+
+<body>
+    <p class="edit">Edit Your Profile</p>
+    <form id="profile_form" method="post" action="{% url 'readapi:edit_profile' %}" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        <label for="">First Name:</label>
+        {{ user_form.first_name }}
+        <label for="">Last Name:</label>
+        {{ user_form.last_name }} {{ profile_form }}
+
+        <!-- Provide a button to click to submit the form. -->
+        <input type="submit" name="submit" value="Save" />
+    </form>
+
+
+</body>
+{% endblock main %}
+
+</html>

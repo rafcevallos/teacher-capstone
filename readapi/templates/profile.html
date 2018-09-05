@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Profile</title>
+</head>
+
+{% block main %}
+
+<body>
+    <p>First name: {{ user.first_name }}</p>
+    <p>Last name: {{ user.last_name }}</p>
+    <p>Classroom: {{ profile.classroom }}</p>
+    <p>Phone: {{ profile.phone }}</p>
+    <a href="/edit_profile" class="edit_profile">Edit</a>
+
+</body>
+{% endblock main %}
+
+</html>

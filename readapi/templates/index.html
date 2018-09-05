@@ -1,0 +1,36 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Read!</title>
+</head>
+
+<body>
+  {% include "navbar.html" with nav_location=view.location %}
+
+  {% block main %}
+  <h1>Welcome to Read!</h1>
+
+  <!-- {% if user.is_authenticated %}
+  {% comment %} <h1>Hello, {{ user.username }}!</h1> {% endcomment %} -->
+
+  {% comment %} {% else %}
+  <div><a href="{% url 'readapi:register' %}">Register</a></div>
+  <div><a href="{% url 'readapi:login' %}">Login</a></div> {% endcomment %}
+  {% endif %}
+
+  {% block content %}
+  <!-- {% comment %} {% "product loop goes here" %} {% endcomment %} -->
+  <div>
+    Students will be displayed here
+  </div>
+  <!-- {% comment %} {% endfor %} {% endcomment %} -->
+  {% endblock content %}
+  {% endblock main %}
+
+</body>
+
+</html>
