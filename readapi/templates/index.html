@@ -15,20 +15,26 @@
   <h1>Welcome to Read!</h1>
 
   {% if user.is_authenticated %}
- <h1>Hello, {{ user.username }}!</h1>
+ <!-- <h1>Hello, {{ user.username }}!</h1> -->
 
   {% block content %}
-  <!-- {% comment %} {% "student loop goes here" %} {% endcomment %} -->
-  <div>
-      Students will be displayed here
-    </div>
-    <!-- {% comment %} {% endfor %} {% endcomment %} -->
+  <h1> Your Students</h1>
+      {% for student in all_students %}
+      <div>
+          <div>
+              <img class="img-student" src="{{MEDIA_URL}}{{student.student_photo.url}}" alt="student">
+          </div>
+          {{student.first_name}}
+          {{student.last_name}}
+          {{student.notes}}
+      </div>
+      {% endfor %}
     {% endblock content %}
-    {% else %}
-  <div><a href="{% url 'readapi:register' %}">Register</a></div>
-  <div><a href="{% url 'readapi:login' %}">Login</a></div>
-    {% endif %}
-    {% endblock main %}
+      {% else %}
+      <div><a href="{% url 'readapi:register' %}">Register</a></div>
+      <div><a href="{% url 'readapi:login' %}">Login</a></div>
+      {% endif %}
+  {% endblock main %}
 
 </body>
 

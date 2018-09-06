@@ -13,7 +13,6 @@ Inclues the following:
 
 """
 
-
 class Student(models.Model):
     READING_LEVEL = (
         ('A'),
@@ -25,7 +24,7 @@ class Student(models.Model):
     )
     first_name = models.CharField(default="", max_length=30)
     last_name = models.CharField(default="", max_length=30)
-    student_photo = models.ImageField(upload_to='studentphotos/')
+    student_photo = models.FileField(upload_to='studentphotos/')
     notes = models.TextField(default="")
     # skills =
     teacher = models.ForeignKey(User, on_delete=models.CASCADE)

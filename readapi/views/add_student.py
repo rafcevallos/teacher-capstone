@@ -14,7 +14,7 @@ def add_student(request):
             new_student = student_form.save()
             new_student.save()
             # CHANGE THIS TO REDIRECT TO STUDENT LIST!!!
-            return redirect('readapi:students')
-
-
+            return redirect('readapi:list_students')
+    else:
+        student_form = StudentForm()
     return render(request, 'student/add_student.html', {'student_form': student_form})
