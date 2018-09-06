@@ -1,4 +1,4 @@
-"""capstone URL Configuration
+"""reading URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.0/topics/http/urls/
@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls import include, url
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('readapi.urls')),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,23 @@
+{% extends 'index.html' %}
+
+{% block main %}
+{% if user.is_authenticated %}
+<h1> Your Students</h1>
+    {% for student in all_students %}
+    <div>
+        <div>
+            <img class="img-student" src="{{MEDIA_URL}}{{student.student_photo.url}}" alt="student">
+        </div>
+        {{student.first_name}}
+        {{student.last_name}}
+        {{student.notes}}
+    </div>
+    {% endfor %}
+
+<form action="{% url 'readapi:add_student' %}" method="post">
+    {% csrf_token %}
+    {{ student_form.as_p }}
+    <input type="submit" value="Add Student" />
+</form>
+{% endif %}
+{% endblock main %}

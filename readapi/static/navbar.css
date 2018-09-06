@@ -49,6 +49,6 @@ li.dropdown {
     display: block;
 }
 
-input {
+.search_bar {
     transform: translate(0%, 60%);
 }

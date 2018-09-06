@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<body>
+    <p class="edit">Add a Student</p>
+    <form action="{% url 'readapi:add_student' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ student_form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+{% endblock main %}
+
+</html>

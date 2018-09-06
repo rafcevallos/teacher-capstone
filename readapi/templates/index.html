@@ -14,22 +14,21 @@
   {% block main %}
   <h1>Welcome to Read!</h1>
 
-  <!-- {% if user.is_authenticated %}
-  {% comment %} <h1>Hello, {{ user.username }}!</h1> {% endcomment %} -->
-
-  {% comment %} {% else %}
-  <div><a href="{% url 'readapi:register' %}">Register</a></div>
-  <div><a href="{% url 'readapi:login' %}">Login</a></div> {% endcomment %}
-  {% endif %}
+  {% if user.is_authenticated %}
+ <h1>Hello, {{ user.username }}!</h1>
 
   {% block content %}
-  <!-- {% comment %} {% "product loop goes here" %} {% endcomment %} -->
+  <!-- {% comment %} {% "student loop goes here" %} {% endcomment %} -->
   <div>
-    Students will be displayed here
-  </div>
-  <!-- {% comment %} {% endfor %} {% endcomment %} -->
-  {% endblock content %}
-  {% endblock main %}
+      Students will be displayed here
+    </div>
+    <!-- {% comment %} {% endfor %} {% endcomment %} -->
+    {% endblock content %}
+    {% else %}
+  <div><a href="{% url 'readapi:register' %}">Register</a></div>
+  <div><a href="{% url 'readapi:login' %}">Login</a></div>
+    {% endif %}
+    {% endblock main %}
 
 </body>
 
