@@ -1,5 +1,7 @@
 from django.conf.urls import url
 from django.urls import include, path
+from django.conf import settings
+from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from . import views
 
@@ -14,4 +16,9 @@ urlpatterns = [
     url(r'^logout$', views.user_logout, name='logout'),
     url(r'^register$', views.register, name='register'),
     #####################
+    # Student URLS
+    url(r'^students$', views.list_students, name='list_students'),
+    url(r'^add_student$', views.add_student, name='add_student'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
