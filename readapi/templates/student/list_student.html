@@ -1,23 +1,36 @@
 {% extends 'index.html' %}
-
 {% block main %}
-{% if user.is_authenticated %}
-<h1> Your Students</h1>
-    {% for student in all_students %}
-    <div>
-        <div>
-            <img class="img-student" src="{{MEDIA_URL}}{{student.student_photo.url}}" alt="student" height="140" width="120">
-        </div>
-        <p>First Name:{{student.first_name}}</p>
-        <p>Last Name: {{student.last_name}}</p>
-        <p>Notes:{{student.notes}}</p>
-    </div>
-    {% endfor %}
 
-<form action="{% url 'readapi:add_student' %}" method="post">
-    {% csrf_token %}
-    {{ student_form.as_p }}
-    <input type="submit" value="Add Student" />
-</form>
-{% endif %}
+<h1> Your Students</h1>
+<div class="container">
+        <form action="{% url 'readapi:add_student' %}" method="post">
+                {% csrf_token %} {{ student_form.as_p }}
+                <input type="submit" value="Add Student" />
+            </form>
+    <div class="columns is-mobile is-multiline">
+        {% for student in all_students %}
+        <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-square">
+                        <img src="{{student.student_photo.url}}" alt="student_photo">
+                    </figure>
+                </div>
+                <div class="media-content">
+                    <p class="title is-5">{{student.first_name}} {{student.last_name}}</p>
+                </div>
+                <div class="content">
+                    <p>Notes:{{student.notes}}</p>
+                </div>
+                <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Edit</a>
+                    <a href="#" class="card-footer-item">Delete</a>
+                </footer>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+
 {% endblock main %}
