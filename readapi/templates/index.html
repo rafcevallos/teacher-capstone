@@ -16,14 +16,13 @@
   <h1>Welcome to Read!</h1>
 
   {% if user.is_authenticated %}
-  <!-- <h1>Hello, {{ user.username }}!</h1> -->
 
   {% block content %}
   <h1> Your Students</h1>
   {% for student in all_students %}
   <div>
     <div>
-      <img class="img-student" src="{{MEDIA_URL}}{{student.student_photo.url}}" alt="student">
+      <img class="img-student" src="{{student.student_photo.url}}" alt="student">
     </div>
     {{student.first_name}} {{student.last_name}} {{student.notes}}
   </div>

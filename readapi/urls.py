@@ -19,6 +19,6 @@ urlpatterns = [
     # Student URLS
     url(r'^students$', views.list_students, name='list_students'),
     url(r'^add_student$', views.add_student, name='add_student'),
-]
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# if settings.DEBUG:
+#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
