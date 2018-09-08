@@ -1,42 +1,41 @@
 {% load static %}
 
-<link rel="stylesheet" type="text/css" href="{% static '/navbar.css' %}">
+<!-- <link rel="stylesheet" type="text/css" href="{% static '/navbar.css' %}"> -->
 
-<nav>
-    <ul class="nav_ul">
+<nav class="navbar is-link" role="navigation" aria-label="dropdownnavigation">
+    <div class="navbar-start">
         {% if user.is_authenticated %}
-        <li><a href="{% url 'readapi:index' %}">Home</a></li>
-        <li>
-            <form action="#" class="search_bar">
-                <input type="text" id="search" name="search_terms">
-                <input type="submit" value="Search">
+        <a class="navbar-item" href="{% url 'readapi:index' %}">Home</a>
+
+        <form action="#" class="navbar-item">
+                <input class="input is-warning is-focused is-rounded" type="text" placeholder="Search!" id="search" name="search_terms">
             </form>
-        </li>
 
-        <li><a href="#">Books</a></li>
-        <li><a href="{% url 'readapi:list_students' %}">Students</a></li>
-        <li><a href="#">Conference Log</a></li>
-        <li><a href="#">Skills</a></li>
 
-        <li class="dropdown">
-            <a href="javascript:void(0)" class="dropbtn">Reading Levels</a>
-            <div class="dropdown_content">
-                <a href="#">Level A</a>
-                <a href="#">Level B</a>
-                <a href="#">Level C</a>
-                <a href="#">Level D</a>
-                <a href="#">Level E</a>
-                <a href="#">Level F</a>
+        <a class="navbar-item" href="#">Books</a>
+        <a class="navbar-item" href="{% url 'readapi:list_students' %}">Students</a>
+        <a class="navbar-item" href="#">Conference Log</a>
+        <a class="navbar-item" href="#">Skills</a>
+
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">Reading Levels</a>
+            <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="#">Level A</a>
+                <a class="navbar-item" href="#">Level B</a>
+                <a class="navbar-item" href="#">Level C</a>
+                <a class="navbar-item" href="#">Level D</a>
+                <a class="navbar-item" href="#">Level E</a>
+                <a class="navbar-item" href="#">Level F</a>
             </div>
-        </li>
+        </div>
 
-        <li><a href="#">My Profile</a></li>
-        <li><a href="{% url 'readapi:logout' %}">Logout</a></li>
-        <li class="rick"><a href="https://www.dafk.net/what/"> Hello, {{ user.username }}!</a></li>
-    </ul>
+        <a class="navbar-item" href="#">My Profile</a>
+        <a class="navbar-item" href="{% url 'readapi:logout' %}">Logout</a>
+        <a class="navbar-item" href="#"> Hello, {{ user.username }}!</a>
     {% else %}
-    <li><a href="{% url 'readapi:login' %}">Login</a></li>
-    <li><a href="{% url 'readapi:register' %}">Register</a></li>
+    <a class="navbar-item" href="{% url 'readapi:login' %}">Login</a>
+    <a class="navbar-item" href="{% url 'readapi:register' %}">Register</a>
     </div>
     {% endif %}
+</div>
 </nav>

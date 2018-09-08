@@ -1,12 +1,14 @@
-{% extends 'index.html' %}
-{% block main %}
+{% extends 'index.html' %} {% block main %}
 
-<h1> Your Students</h1>
-<div class="container">
-        <form action="{% url 'readapi:add_student' %}" method="post">
-                {% csrf_token %} {{ student_form.as_p }}
-                <input type="submit" value="Add Student" />
-            </form>
+<div class="container has-text-centered">
+    <div class="box">
+    <h1 class="title is-2">Your Students</h1>
+
+    <form action="{% url 'readapi:add_student' %}" method="post">
+        {% csrf_token %} {{ student_form.as_p }}
+        <input class="button is-primary is-rounded is-focused" type="submit" value="Add A Student" />
+    </form>
+</div>
     <div class="columns is-mobile is-multiline">
         {% for student in all_students %}
         <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
@@ -17,10 +19,13 @@
                     </figure>
                 </div>
                 <div class="media-content">
-                    <p class="title is-5">{{student.first_name}} {{student.last_name}}</p>
+                    <p class="title is-5 has-text-centered">{{student.first_name}} {{student.last_name}}</p>
                 </div>
-                <div class="content">
-                    <p>Notes:{{student.notes}}</p>
+                <div class="content has-text-centered">
+                    <h3>{{student.reading_level}}</h3>
+                    {% for skill in student.skills %}
+                    <p class="skill-list">{{skill}}</p>
+                    {% endfor %}
                 </div>
                 <footer class="card-footer">
                     <a href="#" class="card-footer-item">Edit</a>

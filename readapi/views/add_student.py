@@ -13,7 +13,6 @@ def add_student(request):
         if student_form.is_valid():
             new_student = student_form.save()
             new_student.save()
-            # CHANGE THIS TO REDIRECT TO STUDENT LIST!!!
             return redirect('readapi:list_students')
     else:
         student_form = StudentForm()
