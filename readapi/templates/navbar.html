@@ -3,39 +3,52 @@
 <!-- <link rel="stylesheet" type="text/css" href="{% static '/navbar.css' %}"> -->
 
 <nav class="navbar is-link" role="navigation" aria-label="dropdownnavigation">
-    <div class="navbar-start">
-        {% if user.is_authenticated %}
-        <a class="navbar-item" href="{% url 'readapi:index' %}">Home</a>
+    <div class="navbar-brand">
+        <a class="navbar-item">
+        </a>
+        <div class="navbar-start">
+            {% if user.is_authenticated %}
+            <a class="navbar-item" href="{% url 'readapi:list_students' %}">Home</a>
 
-        <form action="#" class="navbar-item">
-                <input class="input is-warning is-focused is-rounded" type="text" placeholder="Search!" id="search" name="search_terms">
+            <form action="#" class="navbar-item">
+                <input class="input is-expanded is-warning is-focused is-rounded" type="text" placeholder="Search!" id="search"
+                    name="search_terms">
             </form>
 
 
-        <a class="navbar-item" href="#">Books</a>
-        <a class="navbar-item" href="{% url 'readapi:list_students' %}">Students</a>
-        <a class="navbar-item" href="#">Conference Log</a>
-        <a class="navbar-item" href="#">Skills</a>
+            <a class="navbar-item" href="#">Books</a>
+            <!-- <a class="navbar-item" href="{% url 'readapi:list_students' %}">Students</a> -->
+            <a class="navbar-item" href="#">Conference Log</a>
+            <!-- <a class="navbar-item" href="#">Skills</a> -->
 
-        <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">Reading Levels</a>
-            <div class="navbar-dropdown is-boxed">
-                <a class="navbar-item" href="#">Level A</a>
-                <a class="navbar-item" href="#">Level B</a>
-                <a class="navbar-item" href="#">Level C</a>
-                <a class="navbar-item" href="#">Level D</a>
-                <a class="navbar-item" href="#">Level E</a>
-                <a class="navbar-item" href="#">Level F</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Reading Levels</a>
+                <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item" href="#">Level A</a>
+                    <a class="navbar-item" href="#">Level B</a>
+                    <a class="navbar-item" href="#">Level C</a>
+                    <a class="navbar-item" href="#">Level D</a>
+                    <a class="navbar-item" href="#">Level E</a>
+                    <a class="navbar-item" href="#">Level F</a>
+                </div>
             </div>
-        </div>
 
-        <a class="navbar-item" href="#">My Profile</a>
-        <a class="navbar-item" href="{% url 'readapi:logout' %}">Logout</a>
-        <a class="navbar-item" href="#"> Hello, {{ user.username }}!</a>
-    {% else %}
-    <a class="navbar-item" href="{% url 'readapi:login' %}">Login</a>
-    <a class="navbar-item" href="{% url 'readapi:register' %}">Register</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" href="#"> Hello, {{ user.username }}!</a>
+                <div class="navbar-dropdown is-boxed">
+                    <a class="navbar-item" href="#">My Profile</a>
+                    <a class="navbar-item" href="{% url 'readapi:logout' %}">Logout</a>
+                </div>
+            </div>
+            {% else %}
+            <a class="navbar-item" href="{% url 'readapi:login' %}">Login</a>
+            <a class="navbar-item" href="{% url 'readapi:register' %}">Register</a>
+        </div>
+        {% endif %}
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
     </div>
-    {% endif %}
-</div>
 </nav>
