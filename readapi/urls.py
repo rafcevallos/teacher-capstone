@@ -9,8 +9,7 @@ app_name = "readapi"
 urlpatterns = [
     #####################
     # Index/Home URLs
-    # url(r'^$', views.index, name='index'),
-    url(r'^$', views.list_students, name='list_students'),
+    url(r'^$', views.index, name='index'),
     #####################
     # Login/Register URLs
     url(r'^login$', views.login_user, name='login'),
@@ -18,8 +17,6 @@ urlpatterns = [
     url(r'^register$', views.register, name='register'),
     #####################
     # Student URLS
-    url(r'^students$', views.list_students, name='list_students'),
     url(r'^add_student$', views.add_student, name='add_student'),
+    url(r'^student/(?P<pk>\d+)$', views.student_detail, name='student_detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

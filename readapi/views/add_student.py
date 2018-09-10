@@ -13,7 +13,7 @@ def add_student(request):
         if student_form.is_valid():
             new_student = student_form.save()
             new_student.save()
-            return redirect('readapi:list_students')
+            return redirect('readapi:index')
     else:
         student_form = StudentForm()
     return render(request, 'student/add_student.html', {'student_form': student_form})

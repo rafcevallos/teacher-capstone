@@ -1,16 +1,19 @@
-{% extends 'index.html' %} {% block main %}
+{% extends 'index.html' %}
 
+{% block main %}
 <div class="container has-text-centered">
     <div class="box">
-    <h1 class="title is-2">Your Students</h1>
-
-    <form action="{% url 'readapi:add_student' %}" method="post">
-        {% csrf_token %} {{ student_form.as_p }}
-        <input class="button is-primary is-rounded is-focused" type="submit" value="Add A Student" />
-    </form>
-</div>
+        <h1 class="title is-2">{{student.first_name}} {{student.last_name}}</h1>
+        {% comment %} <form action="{% url 'readapi:edit_student' %}" method="post"> {% endcomment %}
+            {% comment %} {% csrf_token %} {{ student_edit_form.as_p }} {% endcomment %}
+            <input class="button is-primary is-rounded is-focused" type="submit" value="Edit Student" />
+        {% comment %} </form> {% endcomment %}
+        {% comment %} <form action="{% url 'readapi:delete_student' %}" method="post"> {% endcomment %}
+            {% comment %} {% csrf_token %} {{ student_edit_form.as_p }} {% endcomment %}
+            <input class="button is-primary is-rounded is-focused" type="submit" value="Remove Student" />
+        {% comment %} </form> {% endcomment %}
+    </div>
     <div class="columns is-mobile is-multiline">
-        {% for student in all_students %}
         <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
             <div class="card">
                 <div class="card-image">
@@ -26,16 +29,14 @@
                     {% for skill in student.skills %}
                     <p class="skill-list">{{skill}}</p>
                     {% endfor %}
+                    <p class=student-notes">{{student.notes}}</p>
                 </div>
-                <footer class="card-footer">
+                {% comment %} <footer class="card-footer">
                     <a href="#" class="card-footer-item">Edit</a>
                     <a href="#" class="card-footer-item">Delete</a>
-                </footer>
+                </footer> {% endcomment %}
             </div>
         </div>
-
-        {% endfor %}
     </div>
 </div>
-
-{% endblock main %}
+{% endblock %}

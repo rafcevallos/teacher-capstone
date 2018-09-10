@@ -12,24 +12,57 @@
 </head>
 
 <body>
-  {% include "navbar.html" with nav_location=view.location %} {% block main %}
-  <h1>Welcome to Read!</h1>
+  {% include "navbar.html" with nav_location=view.location %}
+  {% comment %} <h1>Welcome to Read!</h1> {% endcomment %}
 
+
+  {% block main %}
   {% if user.is_authenticated %}
 
-  {% block content %}
-  <h1> Your Students</h1>
-  {% for student in all_students %}
-  <div>
-    <div>
-      <img class="img-student" src="{{student.student_photo.url}}" alt="student">
+  <div class="container has-text-centered">
+    <div class="box">
+      <h1 class="title is-2">Your Students</h1>
+      <form action="{% url 'readapi:add_student' %}" method="post">
+        {% csrf_token %} {{ student_form.as_p }}
+        <input class="button is-primary is-rounded is-focused" type="submit" value="Add A Student" />
+      </form>
     </div>
-    {{student.first_name}} {{student.last_name}} {{student.notes}}
+
+    <div class="columns is-mobile is-multiline">
+      {% for student in all_students %}
+      <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-square">
+              <img src="{{student.student_photo.url}}" alt="student_photo">
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-5 has-text-centered">
+                <a href="{% url 'readapi:student_detail' student.id %}">
+              {{student.first_name}} {{student.last_name}}</p></a>
+          </div>
+          <div class="content has-text-centered">
+            <h3>{{student.reading_level}}</h3>
+            {% for skill in student.skills %}
+            <p class="skill-list">{{skill}}</p>
+            {% endfor %}
+          </div>
+          <footer class="card-footer">
+            <a href="#" class="card-footer-item">Edit</a>
+            <a href="#" class="card-footer-item">Delete</a>
+          </footer>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
-  {% endfor %} {% endblock content %} {% else %}
+
+  {% else %}
   <div><a href="{% url 'readapi:register' %}">Register</a></div>
   <div><a href="{% url 'readapi:login' %}">Login</a></div>
-  {% endif %} {% endblock main %}
+  {% endif %}
+  {% endblock main %}
 
 </body>
 
