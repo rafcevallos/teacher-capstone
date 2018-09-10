@@ -1,5 +1,4 @@
 from django.db import models
-from .skill import Skill
 
 
 class ReadingLevel(models.Model):
@@ -12,4 +11,9 @@ class ReadingLevel(models.Model):
         ('F', 'F'),
     )
     level = models.CharField(max_length = 1, default='', choices = READING_LEVEL)
-    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
+
+    class Meta:
+        db_table = "Reading_Level"
+
+    def __str__(self):
+        return self.level
