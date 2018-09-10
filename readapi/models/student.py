@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from multiselectfield import MultiSelectField
 
 
 """
@@ -15,19 +16,36 @@ Inclues the following:
 
 class Student(models.Model):
     READING_LEVEL = (
-        ('A'),
-        ('B'),
-        ('C'),
-        ('D'),
-        ('E'),
-        ('F'),
+        ('A', 'A'),
+        ('B', 'B'),
+        ('C', 'C'),
+        ('D', 'D'),
+        ('E', 'E'),
+        ('F', 'F'),
     )
-    first_name = models.CharField(default="", max_length=30)
-    last_name = models.CharField(default="", max_length=30)
-    student_photo = models.FileField(upload_to='studentphotos/')
-    notes = models.TextField(default="")
-    # skills =
-    teacher = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    SKILLS = (
+        ('Decoding', 'Decoding'),
+        ('Comprehension', 'Comrephension'),
+        ('Fluency', 'Fluency'),
+        ('Expression', 'Expression'),
+        ('Picture Clues', 'Picture Clues'),
+        ('Stretch It', 'Stretch It'),
+        ('Chunking', 'Chunking'),
+        ('Get Mouth Ready', 'Get Mouth Ready'),
+        ('Go Back and Reread', 'Go Back and Reread'),
+        ('Does It Make Sense?', 'Does It Make Sense?'),
+        ('Does It Sound Right?', 'Does It Sound Right?'),
+        ('Self-Corrects', 'Self-Corrects'),
+    )
+
+    teacher = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
+    first_name = models.CharField(default="", blank=True, max_length=30)
+    last_name = models.CharField(default="",  blank=True, max_length=30)
+    student_photo = models.FileField(blank=True,upload_to='studentphotos/')
+    notes = models.TextField(default="", blank=True)
+    reading_level = models.CharField(default="", blank=True,max_length = 1,  choices = READING_LEVEL)
+    skills = MultiSelectField(default='', blank=True, choices = SKILLS)
 
     class Meta:
         db_table = "Student"

@@ -9,7 +9,8 @@ app_name = "readapi"
 urlpatterns = [
     #####################
     # Index/Home URLs
-    url(r'^$', views.index, name='index'),
+    # url(r'^$', views.index, name='index'),
+    url(r'^$', views.list_students, name='list_students'),
     #####################
     # Login/Register URLs
     url(r'^login$', views.login_user, name='login'),
