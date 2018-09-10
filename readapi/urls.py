@@ -8,7 +8,7 @@ from . import views
 app_name = "readapi"
 urlpatterns = [
     #####################
-    # Index/Home URLs
+    # Index/Home/StudentList URLs
     url(r'^$', views.index, name='index'),
     #####################
     # Login/Register URLs
@@ -19,4 +19,8 @@ urlpatterns = [
     # Student URLS
     url(r'^add_student$', views.add_student, name='add_student'),
     url(r'^student/(?P<pk>\d+)$', views.student_detail, name='student_detail'),
+    #####################
+    # Book URLS
+    url(r'^add_book$', views.add_book, name='add_book'),
+    url(r'^books$', views.list_book, name='list_book'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -8,13 +8,13 @@
             {% if user.is_authenticated %}
             <a class="navbar-item" href="{% url 'readapi:index' %}">Home</a>
 
-            <form action="#" class="navbar-item">
+            <form action="{% url 'readapi:list_book' %}" class="navbar-item">
                 <input class="input is-expanded is-danger is-loading is-focused is-rounded" type="text" placeholder="Search!"
                     id="search" name="search_terms">
             </form>
 
 
-            <a class="navbar-item" href="#">Books</a>
+            <a class="navbar-item" href="{% url 'readapi:list_book' %}">Books</a>
             <a class="navbar-item" href="#">Conference Log</a>
 
             <div class="navbar-item has-dropdown is-hoverable">
