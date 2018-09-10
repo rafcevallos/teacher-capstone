@@ -42,7 +42,7 @@ class Student(models.Model):
     teacher = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     first_name = models.CharField(default="", blank=True, max_length=30)
     last_name = models.CharField(default="",  blank=True, max_length=30)
-    student_photo = models.FileField(blank=True,upload_to='studentphotos/')
+    student_photo = models.FileField(blank=True, upload_to='studentphotos/')
     notes = models.TextField(default="", blank=True)
     reading_level = models.CharField(default="", blank=True,max_length = 1,  choices = READING_LEVEL)
     skills = MultiSelectField(default='', blank=True, choices = SKILLS)

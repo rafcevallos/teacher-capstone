@@ -12,12 +12,14 @@ class Book(models.Model):
         ('E', 'E'),
         ('F', 'F'),
     )
-    title = models.CharField(default="", max_length=30)
-    author = models.CharField(default="", max_length=100)
-    level = models.CharField(max_length = 1, default='', choices = READING_LEVEL)
-    word_count = models.IntegerField()
-    unit = models.CharField(default="", max_length=50)
-    genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+
+    book_photo = models.FileField(blank=True,upload_to='bookphotos/')
+    title = models.CharField(default="", blank=True, max_length=100)
+    author = models.CharField(default="", blank=True, max_length=100)
+    level = models.CharField(max_length = 1, default='', blank=True, choices = READING_LEVEL)
+    word_count = models.IntegerField(blank=True)
+    unit = models.CharField(default="", blank=True, max_length=50)
+    genre = models.ForeignKey(Genre, null=True, on_delete=models.CASCADE)
     notes = models.TextField(default="", blank=True)
 
     class Meta:
