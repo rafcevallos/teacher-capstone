@@ -21,7 +21,7 @@ class Book(models.Model):
     notes = models.TextField(default="", blank=True)
 
     class Meta:
-        db_table = "Book"
+        db_table = "Books"
 
     def __str__(self):
         return self.title
