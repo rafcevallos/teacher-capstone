@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h2 class="title">Conference Log for {{conference.student.first_name}} {{conference.student.last_name}}</h2>
+            <h4 class="subtitle">Date: {{conference.date}}</h4>
+            {% comment %} <form action="{% url 'readapi:edit_conference' %}" method="post"> {% endcomment %}
+                {% comment %} {% csrf_token %} {{ conference_edit_form.as_p }} {% endcomment %}
+                <input class="button is-warning is-rounded is-focused" type="submit" value="Edit Conference" />
+                {% comment %} </form> {% endcomment %}
+            {% comment %} <form action="{% url 'readapi:delete_conference' %}" method="post"> {% endcomment %}
+                {% comment %} {% csrf_token %} {{ conference_edit_form.as_p }} {% endcomment %}
+                <input class="button is-danger is-rounded is-focused" type="submit" value="Delete Conference" />
+                {% comment %} </form> {% endcomment %}
+        </div>
+    </div>
+</section>
+<div class="columns is-mobile is-multiline">
+    <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
+        <div class="card">
+            <div class="card-image">
+                <figure class="image is-square">
+                    <img src="{{conference.book.book_photo.url}}" alt="book_photo">
+                </figure>
+            </div>
+            <div class="media-content">
+                <p class="title is-5 has-text-centered"><a href="{% url 'readapi:book_detail' conference.book.id %}">{{conference.book.title}}</a></p>
+            </div>
+            <div class="content has-text-centered">
+                <h6>Level: {{conference.book.level}}</h6>
+                <h6>Strategies:</h6>
+                {% for strategy in conference.strategy.all %}
+                <p>{{strategy.name}}</p>
+                {% endfor %}
+                <h6>Observations:</h6>
+                {% for observation in conference.observation.all %}
+                <p>{{observation.name}}</p>
+                {% endfor %}
+                <p>Comments: {{conference.comments}}</p>
+            </div>
+            {% comment %} <footer class="card-footer">
+                <a href="#" class="card-footer-item">Edit</a>
+                <a href="#" class="card-footer-item">Delete</a>
+            </footer> {% endcomment %}
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

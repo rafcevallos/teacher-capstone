@@ -24,4 +24,9 @@ urlpatterns = [
     url(r'^add_book$', views.add_book, name='add_book'),
     url(r'^books$', views.list_book, name='list_book'),
     url(r'^book/(?P<pk>\d+)$', views.book_detail, name='book_detail'),
+    #####################
+    # Conference Log URLS
+    url(r'^add_conference$', views.add_conference, name='add_conference'),
+    url(r'^list_conference$', views.list_conference, name='list_conference'),
+    url(r'^conference/(?P<pk>\d+)$', views.conference_detail, name='conference_detail'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
