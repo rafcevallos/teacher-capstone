@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+
+{% block main %}
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+        <h2 class="title">{{book.title}}</h2>
+        <h4 class="subtitle">By {{book.author}}</h4>
+        {% comment %} <form action="{% url 'readapi:edit_book' %}" method="post"> {% endcomment %}
+            {% comment %} {% csrf_token %} {{ book_edit_form.as_p }} {% endcomment %}
+            <input class="button is-warning is-rounded is-focused" type="submit" value="Edit Book" />
+        {% comment %} </form> {% endcomment %}
+        {% comment %} <form action="{% url 'readapi:delete_book' %}" method="post"> {% endcomment %}
+            {% comment %} {% csrf_token %} {{ student_edit_form.as_p }} {% endcomment %}
+            <input class="button is-danger is-rounded is-focused" type="submit" value="Delete Book" />
+        {% comment %} </form> {% endcomment %}
+    </div>
+    </div>
+        </section>
+    <div class="columns is-mobile is-multiline">
+        <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
+            <div class="card">
+                <div class="card-image">
+                    <figure class="image is-square">
+                        <img src="{{book.book_photo.url}}" alt="book_photo">
+                    </figure>
+                </div>
+                    {% comment %} <div class="media-content">
+                        <p class="title is-5 has-text-centered">{{book.title}}</p>
+                    </div> {% endcomment %}
+                <div class="content has-text-centered">
+                    <h3>Level: {{book.level}}</h3>
+                    <p>Word Count: {{book.word_count}}</p>
+                    <p>Genre: {{book.genre}}</p>
+                    <p>Unit: {{book.unit}}</p>
+                    <p>Notes: {{book.notes}}</p>
+                </div>
+                {% comment %} <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Edit</a>
+                    <a href="#" class="card-footer-item">Delete</a>
+                </footer> {% endcomment %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

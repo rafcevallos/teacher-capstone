@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+
+{% block main %}
+
+<body>
+    {% comment %} <p class="edit">Add a Book</p> {% endcomment %}
+    <form action="{% url 'readapi:add_conference' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ conference_form.as_p }}
+        {{ strategy_form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+{% endblock main %}
+
+</html>

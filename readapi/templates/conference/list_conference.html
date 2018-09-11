@@ -5,39 +5,34 @@
 
 <div class="container has-text-centered">
   <div class="box">
-    <h1 class="title is-2">Your Books</h1>
-    <form action="{% url 'readapi:add_book' %}" method="post">
-      {% csrf_token %} {{ book_form.as_p }}
-      <input class="button is-primary is-rounded is-focused" type="submit" value="Add A Book" />
-    </form>
+    <h1 class="title is-2">Your Conference Logs</h1>
   </div>
 
   <div class="columns is-mobile is-multiline">
-    {% for book in all_books %}
+    {% for c in all_conference %}
     <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
       <div class="card">
         <div class="card-image">
           <figure class="image is-square">
-            <img src="{{book.book_photo.url}}" alt="book_photo">
+            <img src="{{c.book.book_photo.url}}" alt="book_photo">
           </figure>
         </div>
         <div class="media-content">
           <p class="title is-5 has-text-centered">
-              <a href="{% url 'readapi:book_detail' book.id %}">
-            {{book.title}}</p></a>
+              <a href="{% url 'readapi:conference_detail' c.id %}">
+            {{c.book.title}}</p></a>
         </div>
         <div class="content has-text-centered">
-          <p>Author: {{book.author}}</p>
-          <p>Level: {{book.level}}</p>
-          <p>Genre: {{book.genre}}</p>
-          <p>Word Count: {{book.wordcount}}</p>
-          <p>Unit: {{book.unit}}</p>
+          <p>{{book.author}}</p>
+          <p>{{book.level}}</p>
+          <p>{{book.wordcount}}</p>
+          <p>{{book.unit}}</p>
           {% comment %} <p>{{book.notes}}</p> {% endcomment %}
         </div>
-        <footer class="card-footer">
+        {% comment %} <footer class="card-footer">
           <a href="#" class="card-footer-item">Edit</a>
           <a href="#" class="card-footer-item">Delete</a>
-        </footer>
+        </footer> {% endcomment %}
       </div>
     </div>
     {% endfor %}

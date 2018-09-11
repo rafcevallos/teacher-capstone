@@ -6,3 +6,7 @@ from .add_student import add_student
 from .student_detail import student_detail
 from .list_book import list_book
 from .add_book import add_book
+from .book_detail import book_detail
+from .add_conference import add_conference
+from .list_conference import list_conference
+from .conference_detail import conference_detail
