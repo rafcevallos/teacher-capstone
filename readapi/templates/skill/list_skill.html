@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+
+{% block main %}
+{% if user.is_authenticated %}
+
+<div class="container">
+    <div class="box">
+        <h3 class="title is-3 level-item">Fountas & Pinnell Guided Reading Text Level Descriptions</h3>
+    </div>
+
+    <div class="box">
+        <div class="box">
+            <div class="columns is-mobile">
+                <div class="column">
+                    <h1 class="title is-4 has-text-centered">
+                        {% if skills %}
+                        Characteristics of Texts at Level {{ skills.1.reading_level }}
+                    </h1>
+                    {% endif %}
+
+                    <ul>
+                        {% for skill in skills %}
+                        {% if skill.is_reader == 0 %}
+
+                        <li>
+                            {{skill}}
+                        </li>
+                    </ul>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="columns is-mobile">
+                <div class="column">
+                    <h1 class="title is-4 has-text-centered">
+                        {% if skills %}
+                        Characteristics of Readers at Level {{ skills.1.reading_level }}
+                    </h1>
+                    {% endif %}
+
+                    <ul>
+                        {% for skill in skills %}
+                        {% if skill.is_reader == 1 %}
+
+                        <li>
+                            {{skill}}
+                        </li>
+
+                    </ul>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock main %}

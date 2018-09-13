@@ -10,3 +10,4 @@ from .book_detail import book_detail
 from .add_conference import add_conference
 from .list_conference import list_conference
 from .conference_detail import conference_detail
+from .list_skill import list_skill

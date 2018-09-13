@@ -29,4 +29,7 @@ urlpatterns = [
     url(r'^add_conference$', views.add_conference, name='add_conference'),
     url(r'^list_conference$', views.list_conference, name='list_conference'),
     url(r'^conference/(?P<pk>\d+)$', views.conference_detail, name='conference_detail'),
+    #####################
+    # Skill URLS
+    url(r'^list_skill/(?P<pk>\d+)$', views.list_skill, name='list_skill'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
