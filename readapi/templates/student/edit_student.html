@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+
+{% block main %}
+{% if user.is_authenticated %}
+
+<div class="container has-text-centered">
+    <div class="box">
+        {% if s %}
+        <h1 class="title is-2">Edit {{s.first_name}} {{s.last_name}}</h1>
+        {% endif %}
+    </div>
+
+    <div class="box">
+        <form id="student_form" method="post" action="{% url 'readapi:index' %}" enctype="multipart/form-data">
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Student</label>
+                </div>
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input" type="text" placeholder={{student_form.first_name}} <span class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input" type="text" placeholder="Last">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+                    {% csrf_token %}
+                    <label for="">First Name:</label>
+                    {{ student_form.first_name }}
+                    <label for="">Last Name:</label>
+                    {{ student_form.last_name }}
+                    {{student_form}}
+
+
+                    <!-- Provide a button to click to submit the form. -->
+                    <input type="submit" name="submit" value="Save" />
+        </form>
+    </div>
+</div>
+    {% endif %}
+    {% endblock main %}
