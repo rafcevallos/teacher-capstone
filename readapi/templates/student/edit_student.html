@@ -22,18 +22,18 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control is-expanded has-icons-left">
-                            <input class="input" type="text" placeholder={{student_form.first_name}}>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
+                            <input class="input is-focused" type="text" placeholder={{student_form.first_name}} <span
+                                class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
                             </span>
                         </p>
                     </div>
 
                     <div class="field">
                         <p class="control is-expanded has-icons-left">
-                            <input class="input" type="text" placeholder={{student_form.last_name}}>
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-user"></i>
+                            <input class="input is-focused  " type="text" placeholder={{student_form.last_name}} <span
+                                class="icon is-small is-left">
+                            <i class="fas fa-user"></i>
                             </span>
                         </p>
                     </div>
@@ -64,7 +64,7 @@
                     <label class="label">Current Reading Level</label>
                 </div>
 
-            <div class="field-body">
+                <div class="field-body">
                     <div class="control is-expanded">
                         <div class="select is-primary">
                             <select class="is-hovered is-focused">
@@ -80,9 +80,76 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            {% comment %} End of Reading Level Dropdown {% endcomment %}
 
-                {% comment %} Button {% endcomment %}
-                {% comment %} <div>
+            {% comment %} Beginning of Skills {% endcomment %}
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Skills</label>
+                </div>
+
+                <div class="field-body">
+                    <div class="field is-grouped is-grouped-multiline">
+                        <p class="control">
+                            <a>{{student_form.skills.1}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.2}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.3}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.4}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.5}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.6}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.7}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.8}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.9}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.10}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.11}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.12}}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% comment %} End of Skills {% endcomment %}
+
+            {% comment %} Beginning of Notes {% endcomment %}
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Notes</label>
+                </div>
+
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control is-expanded">
+                            <textarea class="textarea is-focused" type="text" placeholder={{student_form.notes}}</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% comment %} End of Notes {% endcomment %}
+
+            {% comment %} Button {% endcomment %}
+            {% comment %} <div>
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
@@ -92,7 +159,7 @@
                         </div>
                     </div>
                 </div>
-                </div> {% endcomment %}
+            </div> {% endcomment %}
         </form>
     </div>
 </div>
