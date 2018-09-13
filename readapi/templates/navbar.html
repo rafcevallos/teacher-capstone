@@ -8,7 +8,7 @@
             {% if user.is_authenticated %}
             <a class="navbar-item" href="{% url 'readapi:index' %}"><img src="https://png.icons8.com/color/1600/school.png"></a>
 
-            <form action="{% url 'readapi:list_book' %}" class="navbar-item">
+            <form action="{% url 'readapi:list_book' %}" class="navbar-item search_bar">
                 <input class="input is-expanded is-danger is-loading is-focused is-rounded" type="text" placeholder="Search!"
                     id="search" name="search_terms">
             </form>
@@ -21,10 +21,15 @@
                 <a class="navbar-link">Reading Levels</a>
                 <div class="navbar-dropdown is-boxed">
                     <a class="navbar-item" href="{% url 'readapi:list_skill' pk=1 %}">Level A</a>
+                    <hr class="navbar-divider">
                     <a class="navbar-item" href="{% url 'readapi:list_skill' pk=2 %}">Level B</a>
+                    <hr class="navbar-divider">
                     <a class="navbar-item" href="{% url 'readapi:list_skill' pk=3 %}">Level C</a>
+                    <hr class="navbar-divider">
                     <a class="navbar-item" href="{% url 'readapi:list_skill' pk=4 %}">Level D</a>
+                    <hr class="navbar-divider">
                     <a class="navbar-item" href="{% url 'readapi:list_skill' pk=5 %}">Level E</a>
+                    <hr class="navbar-divider">
                     <a class="navbar-item" href="{% url 'readapi:list_skill' pk=6 %}">Level F</a>
                 </div>
             </div>
@@ -33,6 +38,7 @@
                 <a class="navbar-link" href="#"> Hello, {{ user.username }}!</a>
                 <div class="navbar-dropdown is-boxed">
                     <a class="navbar-item" href="#">My Profile</a>
+                    <hr class="navbar-divider">
                     <a class="navbar-item" href="{% url 'readapi:logout' %}">Logout</a>
                 </div>
             </div>
@@ -41,10 +47,10 @@
             <a class="navbar-item" href="{% url 'readapi:register' %}">Register</a>
         </div>
         {% endif %}
-        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <div class="navbar-burger" aria-label="menu" aria-expanded="false">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
-        </a>
+        </div>
     </div>
 </nav>
