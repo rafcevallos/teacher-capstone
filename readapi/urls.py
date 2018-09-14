@@ -23,6 +23,7 @@ urlpatterns = [
     #####################
     # Book URLS
     url(r'^add_book$', views.add_book, name='add_book'),
+    url(r'^edit_book/(?P<pk>\d+)$', views.edit_book, name='edit_book'),
     url(r'^books$', views.list_book, name='list_book'),
     url(r'^book/(?P<pk>\d+)$', views.book_detail, name='book_detail'),
     #####################

@@ -35,7 +35,7 @@
           {% comment %} <p>{{book.notes}}</p> {% endcomment %}
         </div>
         <footer class="card-footer">
-          <a href="#" class="card-footer-item">Edit</a>
+          <a href="{% url 'readapi:edit_book' book.id %}" class="card-footer-item">Edit</a>
           <a href="#" class="card-footer-item">Delete</a>
         </footer>
       </div>
