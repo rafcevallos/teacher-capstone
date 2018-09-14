@@ -18,6 +18,7 @@ urlpatterns = [
     #####################
     # Student URLS
     url(r'^add_student$', views.add_student, name='add_student'),
+    url(r'^edit_student/(?P<pk>\d+)$', views.edit_student, name='edit_student'),
     url(r'^student/(?P<pk>\d+)$', views.student_detail, name='student_detail'),
     #####################
     # Book URLS
