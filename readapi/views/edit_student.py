@@ -9,6 +9,7 @@ from readapi.models import Student
 @login_required
 def edit_student(request, pk):
     print(pk)
+    print(request.method)
     if request.method == "GET":
         print("GET")
         s = Student.objects.get(pk=pk)
@@ -22,8 +23,9 @@ def edit_student(request, pk):
         # Here's where we post updated info to the user
         s = Student.objects.get(pk=pk)
         student_form = StudentForm(request.POST, instance=s)
+        print('HERE IS THE STRING')
 
         if student_form.is_valid():
             student_form.save()
 
-            return redirect(reverse('readapi: index'))
+            return redirect(reverse('readapi:index'))
