@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'conference/list_conference.html' %}
 
 {% block main %}
 
@@ -7,12 +7,12 @@
         <div class="container has-text-centered">
             <h2 class="title">Conference Log for {{conference.student.first_name}} {{conference.student.last_name}}</h2>
             <h4 class="subtitle">Date: {{conference.date}}</h4>
-            {% comment %} <form action="{% url 'readapi:edit_conference' %}" method="post"> {% endcomment %}
-                {% comment %} {% csrf_token %} {{ conference_edit_form.as_p }} {% endcomment %}
+            <form action="{% url 'readapi:edit_conference' %}" method="post">
+                {% csrf_token %} {{ conference_form.as_p }}
                 <input class="button is-warning is-rounded is-focused" type="submit" value="Edit Conference" />
-                {% comment %} </form> {% endcomment %}
+            </form>
             {% comment %} <form action="{% url 'readapi:delete_conference' %}" method="post"> {% endcomment %}
-                {% comment %} {% csrf_token %} {{ conference_edit_form.as_p }} {% endcomment %}
+                {% comment %} {% csrf_token %} {{ conference_form.as_p }} {% endcomment %}
                 <input class="button is-danger is-rounded is-focused" type="submit" value="Delete Conference" />
                 {% comment %} </form> {% endcomment %}
         </div>

@@ -4,14 +4,13 @@
 <div class="container has-text-centered">
     <div class="box">
         <h1 class="title is-2">{{student.first_name}} {{student.last_name}}</h1>
-        <form action="{% url 'readapi:edit_student' student.id %}" method="post">
-            {% csrf_token %} {{ student_form.as_p }}
+        <a href="{% url 'readapi:edit_student' student.id %}">
             <input class="button is-primary is-rounded is-focused" type="submit" value="Edit Student" />
-        </form>
+        </a>
         {% comment %} <form action="{% url 'readapi:delete_student' %}" method="post"> {% endcomment %}
             {% comment %} {% csrf_token %} {{ student_edit_form.as_p }} {% endcomment %}
             <input class="button is-primary is-rounded is-focused" type="submit" value="Remove Student" />
-        {% comment %} </form> {% endcomment %}
+            {% comment %} </form> {% endcomment %}
     </div>
     <div class="columns is-mobile is-multiline">
         <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">

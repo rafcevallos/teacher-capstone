@@ -13,8 +13,6 @@
 
 <body>
   {% include "navbar.html" with nav_location=view.location %}
-  {% comment %} <h1>Welcome to Read!</h1> {% endcomment %}
-
 
   {% block main %}
   {% if user.is_authenticated %}
