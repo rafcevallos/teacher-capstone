@@ -14,8 +14,13 @@ def edit_student(request, pk):
         print("GET")
         s = Student.objects.get(pk=pk)
         # Here's where we load the form
-        student_form = StudentForm(initial={'first_name': s.first_name,
-                                            'last_name': s.last_name, 'photo': s.student_photo, 'reading_level': s.reading_level, 'skills': s.skills, 'notes': s.notes},)  # create profile fields and set defaults
+        student_form = StudentForm(initial={
+            'first_name': s.first_name,
+            'last_name': s.last_name,
+            'photo': s.student_photo,
+            'reading_level': s.reading_level,
+            'skills': s.skills,
+            'notes': s.notes},)  # create student fields and set defaults
         return render(request, 'student/edit_student.html', {'s': s, 'student_form': student_form})
 
     elif request.method == "POST":

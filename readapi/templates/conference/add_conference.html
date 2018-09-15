@@ -12,7 +12,7 @@
         <form action="{% url 'readapi:add_conference' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ conference_form.as_p }}
-            {{ strategy_form.as_p }}
+            {% comment %} {{ strategy_form.as_p }} {% endcomment %}
 
             {% comment %} Button {% endcomment %}
             <div>
