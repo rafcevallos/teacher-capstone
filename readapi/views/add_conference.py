@@ -14,7 +14,7 @@ def add_conference(request):
         if conference_form.is_valid():
             new_conference = conference_form.save()
             new_conference.save()
-            return redirect('readapi:list_conference')
+            return redirect('readapi:index')
     else:
         conference_form = ConferenceForm()
     return render(request, 'conference/add_conference.html', {'conference_form': conference_form})

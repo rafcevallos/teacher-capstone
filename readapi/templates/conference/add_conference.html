@@ -12,22 +12,21 @@
         <form action="{% url 'readapi:add_conference' %}" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ conference_form.as_p }}
-            {% comment %} {{ strategy_form.as_p }} {% endcomment %}
 
             {% comment %} Button {% endcomment %}
             <div>
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                            <button class="button is-primary" type="submit" name="submit" value="Save" />
+                            <button class="button is-primary" type="submit" onclick="return confirm('Are you sure?')" name="submit" value="Save" />
                             Submit
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
+        </form>
     </div>
-    </form>
 </div>
 {% endif %}
 {% endblock main %}
