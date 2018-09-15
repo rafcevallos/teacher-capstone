@@ -8,6 +8,7 @@ from .student_detail import student_detail
 from .list_book import list_book
 from .add_book import add_book
 from .edit_book import edit_book
+from .delete_book import delete_book
 from .book_detail import book_detail
 from .add_conference import add_conference
 from .edit_conference import edit_conference
