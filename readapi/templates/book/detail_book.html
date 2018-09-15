@@ -10,10 +10,10 @@
                     <h2 class="title">{{book.title}}</h2>
                     <h4 class="subtitle">By {{book.author}}</h4>
                     <a href="{% url 'readapi:edit_book' book.id %}">
-                        <input class="button is-warning is-rounded is-focused" type="submit" value="Edit Book" />
+                        <input class="button is-warning is-rounded is-focused" type="submit" onclick="return confirm('Are you sure?')" value="Edit Book" />
                     </a>
                     <a href="{% url 'readapi:delete_book' book.id %}">
-                        <input class="button is-danger is-rounded is-focused" type="submit" value="Delete Book" />
+                        <input class="button is-danger is-rounded is-focused" type="submit" onclick="return confirm('Are you sure?')" value="Delete Book" />
                     </a>
                 </div>
             </div>

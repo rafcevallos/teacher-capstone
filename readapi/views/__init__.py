@@ -12,6 +12,7 @@ from .delete_book import delete_book
 from .book_detail import book_detail
 from .add_conference import add_conference
 from .edit_conference import edit_conference
+from .delete_conference import delete_conference
 from .list_conference import list_conference
 from .conference_detail import conference_detail
 from .list_skill import list_skill

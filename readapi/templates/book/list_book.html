@@ -12,35 +12,41 @@
     </form>
   </div>
 
-  <div class="columns is-mobile is-multiline">
-    {% for book in all_books %}
-    <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
-      <div class="card">
-        <div class="card-image">
-          <figure class="image is-square">
-            <img src="{{book.book_photo.url}}" alt="book_photo">
-          </figure>
+  <div class="box">
+    <div class="columns is-mobile is-multiline">
+      {% for book in all_books %}
+      <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-square">
+              <img src="{{book.book_photo.url}}" alt="book_photo">
+            </figure>
+          </div>
+
+          <div class="media-content">
+            <p class="title is-5 has-text-centered">
+              <a href="{% url 'readapi:book_detail' book.id %}">
+                {{book.title}}
+              </a>
+            </p>
+          </div>
+
+          <div class="content has-text-centered">
+            {% comment %} <p>Author: {{book.author}}</p> {% endcomment %}
+            <p>Level: {{book.level}}</p>
+            <p>Genre: {{book.genre}}</p>
+            <p>Word Count: {{book.wordcount}}</p>
+            <p>Unit: {{book.unit}}</p>
+            {% comment %} <p>{{book.notes}}</p> {% endcomment %}
+          </div>
+          <footer class="card-footer">
+            <a href="{% url 'readapi:edit_book' book.id %}" class="card-footer-item">Edit</a>
+            <a href="{% url 'readapi:delete_book' book.id %}" class="card-footer-item">Delete</a>
+          </footer>
         </div>
-        <div class="media-content">
-          <p class="title is-5 has-text-centered">
-            <a href="{% url 'readapi:book_detail' book.id %}">
-              {{book.title}}</p></a>
-        </div>
-        <div class="content has-text-centered">
-          <p>Author: {{book.author}}</p>
-          <p>Level: {{book.level}}</p>
-          <p>Genre: {{book.genre}}</p>
-          <p>Word Count: {{book.wordcount}}</p>
-          <p>Unit: {{book.unit}}</p>
-          {% comment %} <p>{{book.notes}}</p> {% endcomment %}
-        </div>
-        <footer class="card-footer">
-          <a href="{% url 'readapi:edit_book' book.id %}" class="card-footer-item">Edit</a>
-          <a href="{% url 'readapi:delete_book' book.id %}" class="card-footer-item">Delete</a>
-        </footer>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </div>
 
