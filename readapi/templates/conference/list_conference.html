@@ -1,5 +1,3 @@
-{% extends 'index.html' %}
-
 {% block main %}
 {% if user.is_authenticated %}
 
@@ -15,6 +13,7 @@
   <div class="box">
     <div class="columns is-mobile is-multiline">
       {% for c in all_conference %}
+      {% if c.student.id == student.id %}
       <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
         <div class="card">
           <div class="card-image">
@@ -26,6 +25,7 @@
             <p class="title is-5 has-text-centered">
               <a href="{% url 'readapi:conference_detail' c.id %}">
                 {{c.book.title}}
+                {{c.student.name}}
             </p>
             </a>
           </div>
@@ -42,6 +42,7 @@
           </footer>
         </div>
       </div>
+      {% endif %}
       {% endfor %}
     </div>
   </div>

@@ -1,24 +1,18 @@
 {% extends 'index.html' %}
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title>Read!</title>
-</head>
 {% block main %}
+<div class="container has-text-centered">
+    <div class="box">
+        <h1 class="title is-2">Login to G.R.E.A.T!</h1>
+        <form id="login_form" method="post" action="{% url 'readapi:login' %}">
+            {% csrf_token %}
+            Username: <input type="text" name="username" value="" size="50" />
+            <br /> Password: <input type="password" name="password" value="" size="50" />
+            <br />
+            <br />
+            <input class="button is-primary is-rounded is-focused" type="submit" value="Add A Conference" />
+        </form>
+    </div>
+</div>
 
-<body>
-    <h1>Login to Read!</h1>
-
-    <form id="login_form" method="post" action="{% url 'readapi:login' %}">
-        {% csrf_token %} Username: <input type="text" name="username" value="" size="50" />
-        <br /> Password: <input type="password" name="password" value="" size="50" />
-        <br />
-
-        <input type="submit" value="submit" />
-    </form>
-
-</body>
 {% endblock main %}
-
-</html>

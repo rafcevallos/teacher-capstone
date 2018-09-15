@@ -30,7 +30,7 @@ urlpatterns = [
     # Conference Log URLS
     url(r'^add_conference$', views.add_conference, name='add_conference'),
     url(r'^edit_conference/(?P<pk>\d+)$', views.edit_conference, name='edit_conference'),
-    url(r'^conferences$', views.list_conference, name='list_conference'),
+    # url(r'^conferences$', views.list_conference, name='list_conference'),
     url(r'^conference/(?P<pk>\d+)$', views.conference_detail, name='conference_detail'),
     #####################
     # Skill URLS

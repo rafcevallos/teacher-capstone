@@ -12,30 +12,36 @@
             <input class="button is-primary is-rounded is-focused" type="submit" value="Remove Student" />
             {% comment %} </form> {% endcomment %}
     </div>
-    <div class="columns is-mobile is-multiline">
-        <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
-            <div class="card">
-                <div class="card-image">
-                    <figure class="image is-square">
-                        <img src="{{student.student_photo.url}}" alt="student_photo">
-                    </figure>
+
+    <div class="box">
+        <div class="columns is-mobile is-multiline">
+            <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image is-square">
+                            <img src="{{student.student_photo.url}}" alt="student_photo">
+                        </figure>
+                    </div>
+                    <div class="media-content">
+                        <p class="title is-5 has-text-centered">{{student.first_name}} {{student.last_name}}</p>
+                    </div>
+                    <div class="content has-text-centered">
+                        <h3>{{student.reading_level}}</h3>
+                        {% for skill in student.skills %}
+                        <p class="skill-list">{{skill}}</p>
+                        {% endfor %}
+                        <p class=student-notes">{{student.notes}}</p>
+                    </div>
+                    {% comment %} <footer class="card-footer">
+                        <a href="#" class="card-footer-item">Edit</a>
+                        <a href="#" class="card-footer-item">Delete</a>
+                    </footer> {% endcomment %}
                 </div>
-                <div class="media-content">
-                    <p class="title is-5 has-text-centered">{{student.first_name}} {{student.last_name}}</p>
-                </div>
-                <div class="content has-text-centered">
-                    <h3>{{student.reading_level}}</h3>
-                    {% for skill in student.skills %}
-                    <p class="skill-list">{{skill}}</p>
-                    {% endfor %}
-                    <p class=student-notes">{{student.notes}}</p>
-                </div>
-                {% comment %} <footer class="card-footer">
-                    <a href="#" class="card-footer-item">Edit</a>
-                    <a href="#" class="card-footer-item">Delete</a>
-                </footer> {% endcomment %}
             </div>
         </div>
     </div>
+    {% block conference %}
+    {% include 'conference/list_conference.html' %}
+    {% endblock %}
 </div>
 {% endblock %}
