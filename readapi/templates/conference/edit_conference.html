@@ -6,7 +6,7 @@
 <div class="container">
     <div class="box">
         {% if conference %}
-        <h1 class="title is-2 has-text-centered">Edit {{conference.student}} log from {{conference.date}}</h1>
+        <h1 class="title is-2 has-text-centered">Edit {{conference.student}}'s log from {{conference.date}}</h1>
         {% endif %}
     </div>
 
@@ -14,7 +14,7 @@
         <form id="conference_form" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             {{ conference_form.as_p }}
-            {{ strategy_form.as_p }}
+            {% comment %} {{ strategy_form.as_p }} {% endcomment %}
 
             {% comment %} Button {% endcomment %}
             <div>

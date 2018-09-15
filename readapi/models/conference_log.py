@@ -15,5 +15,8 @@ class ConferenceLog(models.Model):
     class Meta:
         db_table = "Conference_Log"
 
-    def __str__(self):
-        return self.date
+    # def __str__(self):
+    #     return str(self.date)
+
+# .strftime("%Y %m %d")
+    # Convert datefield to string

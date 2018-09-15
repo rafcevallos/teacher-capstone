@@ -9,20 +9,27 @@ from readapi.models import ConferenceLog
 @login_required
 def edit_conference(request, pk):
     print(pk)
-    print(request.method)
     if request.method == "GET":
         print("GET")
         conference = ConferenceLog.objects.get(pk=pk)
-        # Here's where we load the form
-        conference_form = ConferenceForm(initial={'date': conference.date,
-                                                  'student': conference.student, 'book': conference.book, 'strategy': conference.strategy, 'observation': conference.observation, 'reading_level': conference.reading_level, 'comments': conference.comments}, )  # create profile fields and set defaults)
+        print('Thing', conference)
+        # Here's where we load the form with the fields and data from the DB
+        conference_form = ConferenceForm(initial={
+            'student': conference.student,
+            'book': conference.book,
+            'strategy': conference.strategy.all, # How to target many to many field join table data
+            'observation': conference.observation.all,  # How to target many to many field join table data
+            'reading_level': conference.reading_level,
+            'comments': conference.comments
+            })
         return render(request, 'conference/edit_conference.html', {'conference': conference, 'conference_form': conference_form})
 
     elif request.method == "POST":
         print("POST")
-        # Here's where we post updated info to the user
+        # Here's where we post upstudent,d info to the user
         conference = ConferenceLog.objects.get(pk=pk)
-        conference_form = ConferenceForm(request.POST, instance=conference)
+        conference_form = ConferenceForm(
+            request.POST, instance=conference)
         print('HERE IS THE STRING')
 
         if conference_form.is_valid():
