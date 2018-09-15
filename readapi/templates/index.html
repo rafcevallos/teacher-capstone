@@ -26,33 +26,35 @@
       </form>
     </div>
 
-    <div class="columns is-mobile is-multiline">
-      {% for student in all_students %}
-      <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
-        <div class="card">
-          <div class="card-image">
-            <figure class="image is-square">
-              <img src="{{student.student_photo.url}}" alt="student_photo">
-            </figure>
+    <div class="box">
+      <div class="columns is-mobile is-multiline">
+        {% for student in all_students %}
+        <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-square">
+                <img src="{{student.student_photo.url}}" alt="student_photo">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-5 has-text-centered">
+                <a href="{% url 'readapi:student_detail' student.id %}">
+                  {{student.first_name}} {{student.last_name}}</p></a>
+            </div>
+            <div class="content has-text-centered">
+              <h3>{{student.reading_level}}</h3>
+              {% for skill in student.skills %}
+              <p class="skill-list">{{skill}}</p>
+              {% endfor %}
+            </div>
+            <footer class="card-footer">
+              <a href="{% url 'readapi:edit_student' student.id %}" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
           </div>
-          <div class="media-content">
-            <p class="title is-5 has-text-centered">
-              <a href="{% url 'readapi:student_detail' student.id %}">
-                {{student.first_name}} {{student.last_name}}</p></a>
-          </div>
-          <div class="content has-text-centered">
-            <h3>{{student.reading_level}}</h3>
-            {% for skill in student.skills %}
-            <p class="skill-list">{{skill}}</p>
-            {% endfor %}
-          </div>
-          <footer class="card-footer">
-            <a href="{% url 'readapi:edit_student' student.id %}" class="card-footer-item">Edit</a>
-            <a href="#" class="card-footer-item">Delete</a>
-          </footer>
         </div>
+        {% endfor %}
       </div>
-      {% endfor %}
     </div>
   </div>
 

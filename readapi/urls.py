@@ -24,18 +24,17 @@ urlpatterns = [
     # Book URLS
     url(r'^add_book$', views.add_book, name='add_book'),
     url(r'^edit_book/(?P<pk>\d+)$', views.edit_book, name='edit_book'),
-    url(r'^book/(?P<pk>\d+)/delete$', views.delete_book, name="delete_book"),
+    url(r'^book/(?P<pk>\d+)/delete$', views.delete_book, name='delete_book'),
     url(r'^books$', views.list_book, name='list_book'),
     url(r'^book/(?P<pk>\d+)$', views.book_detail, name='book_detail'),
     #####################
     # Conference Log URLS
     url(r'^add_conference$', views.add_conference, name='add_conference'),
-    url(r'^edit_conference/(?P<pk>\d+)$',
-        views.edit_conference, name='edit_conference'),
-    # url(r'^conferences$', views.list_conference, name='list_conference'),
-    url(r'^conference/(?P<pk>\d+)$',
-        views.conference_detail, name='conference_detail'),
+    url(r'^edit_conference/(?P<pk>\d+)$', views.edit_conference, name='edit_conference'),
+    url(r'^conference/(?P<pk>\d+)/delete$', views.delete_conference, name='delete_conference'),
+    url(r'^conference/(?P<pk>\d+)$', views.conference_detail, name='conference_detail'),
     #####################
     # Skill URLS
     url(r'^list_skill/(?P<pk>\d+)$', views.list_skill, name='list_skill'),
+    #####################
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
