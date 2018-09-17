@@ -10,9 +10,9 @@ def list_book(request):
     search_terms = request.GET.get('search_terms', '')
     print(search_terms)
     all_books = Book.objects.all()
-    if search_terms:
+    if search_terms.lower():
         search_results = [
-            book for book in all_books if search_terms in book.title]
+            book for book in all_books if search_terms in book.title.lower()]
         print(search_results)
         # filter all_books and render the filtered stuff
         return render(request, 'book/search_book.html', {'search_results': search_results})

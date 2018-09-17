@@ -49,7 +49,7 @@
             </div>
             <footer class="card-footer">
               <a href="{% url 'readapi:edit_student' student.id %}" class="card-footer-item">Edit</a>
-              <a href="#" class="card-footer-item">Delete</a>
+              <a href="{% url 'readapi:delete_student' student.id %}" class="card-footer-item">Delete</a>
             </footer>
           </div>
         </div>
