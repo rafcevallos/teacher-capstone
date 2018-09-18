@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.template import RequestContext
 from django.shortcuts import render
-from readapi.models import Book, Student
+from readapi.models import Book
 
 
 @login_required
