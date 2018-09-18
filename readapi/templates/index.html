@@ -11,7 +11,7 @@
   <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
 </head>
 
-<body>
+<body class="has-navbar-fixed-top has-background-light">
   {% include "navbar.html" with nav_location=view.location %}
 
   {% block main %}
@@ -22,7 +22,7 @@
       <h1 class="title is-2">Your Students</h1>
       <form action="{% url 'readapi:add_student' %}" method="post">
         {% csrf_token %} {{ student_form.as_p }}
-        <input class="button is-primary is-rounded is-focused" type="submit" value="Add A Student" />
+        <input class="button is-success is-rounded is-focused" type="submit" value="Add A Student" />
       </form>
     </div>
 
@@ -49,7 +49,8 @@
             </div>
             <footer class="card-footer">
               <a href="{% url 'readapi:edit_student' student.id %}" class="card-footer-item">Edit</a>
-              <a href="{% url 'readapi:delete_student' student.id %}" onclick="return confirm('Are you sure you want to delete {{student.first_name}} {{student.last_name}}?')" class="card-footer-item">Delete</a>
+              <a href="{% url 'readapi:delete_student' student.id %}" onclick="return confirm('Are you sure you want to delete {{student.first_name}} {{student.last_name}}?')"
+                class="card-footer-item">Delete</a>
             </footer>
           </div>
         </div>
