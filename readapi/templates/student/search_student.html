@@ -1,34 +1,19 @@
-{% load staticfiles %}
-
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Read!</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
-  <script defer src="https://use.fontawesome.com/releases/v5.1.0/js/all.js"></script>
-</head>
-
-<body>
-  {% include "navbar.html" with nav_location=view.location %}
-
+{% extends "index.html" %}
   {% block main %}
   {% if user.is_authenticated %}
 
   <div class="container has-text-centered">
     <div class="box">
-      <h1 class="title is-2">Your Students</h1>
-      <form action="{% url 'readapi:add_student' %}" method="post">
+      <h1 class="title is-2">Results for Reading Level {{search_results.0.reading_level}}</h1>
+      {% comment %} <form action="{% url 'readapi:add_student' %}" method="POST">
         {% csrf_token %} {{ student_form.as_p }}
         <input class="button is-primary is-rounded is-focused" type="submit" value="Add A Student" />
-      </form>
+      </form> {% endcomment %}
     </div>
 
     <div class="box">
       <div class="columns is-mobile is-multiline">
-        {% for student in all_students %}
+        {% for student in search_results %}
         <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
           <div class="card">
             <div class="card-image">

@@ -4,6 +4,7 @@ from .register import register
 from .user_logout import user_logout
 from .add_student import add_student
 from .edit_student import edit_student
+from .delete_student import delete_student
 from .student_detail import student_detail
 from .list_book import list_book
 from .add_book import add_book
@@ -16,3 +17,4 @@ from .delete_conference import delete_conference
 from .list_conference import list_conference
 from .conference_detail import conference_detail
 from .list_skill import list_skill
+# from .search_results import search_results

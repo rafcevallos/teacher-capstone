@@ -1,0 +1,15 @@
+{% extends "index.html" %}
+
+{% block main %}
+{% if user.is_authenticated %}
+
+<div>
+{% include "book/search_book.html" %}
+</div>
+
+<div>
+{% include "student/search_student.html" %}
+</div>
+
+{% endif %}
+{% endblock %}

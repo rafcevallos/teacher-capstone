@@ -9,7 +9,7 @@
         </a>
         {% comment %} <form action="{% url 'readapi:delete_student' %}" method="post"> {% endcomment %}
             {% comment %} {% csrf_token %} {{ student_edit_form.as_p }} {% endcomment %}
-            <input class="button is-danger is-rounded is-focused" type="submit" onclick="return confirm('Are you sure?')" value="Remove Student" />
+            <input class="button is-danger is-rounded is-focused" type="submit" onclick="return confirm('Are you sure you want to delete {{student.first_name}} {{student.last_name}}?')" value="Remove Student" />
             {% comment %} </form> {% endcomment %}
     </div>
 

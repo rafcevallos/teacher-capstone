@@ -8,8 +8,9 @@
             {% if user.is_authenticated %}
             <a class="navbar-item" href="{% url 'readapi:index' %}"><img src="https://png.icons8.com/color/1600/school.png"></a>
 
-            <form action="{% url 'readapi:list_book' %}" class="navbar-item search_bar">
-                <input class="input is-expanded is-danger is-loading is-focused is-rounded" type="text" placeholder="Search!"
+
+            <form action="{% url 'readapi:index' %}" class="navbar-item search_bar">
+                <input class="input is-expanded is-danger is-loading is-focused is-rounded" type="text" placeholder="Search for a reading level"
                     id="search" name="search_terms">
             </form>
 

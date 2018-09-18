@@ -1,11 +1,10 @@
-{% extends 'index.html' %}
-
+{% extends "book/list_book.html" %}
 {% block main %}
 {% if user.is_authenticated %}
 
 <div class="container has-text-centered">
   <div class="box">
-    <h1 class="title is-2">Your Books</h1>
+    <h1 class="title is-2">Book Search Results</h1>
     <form action="{% url 'readapi:add_book' %}" method="post">
       {% csrf_token %} {{ book_form.as_p }}
       <input class="button is-primary is-rounded is-focused" type="submit" value="Add A Book" />
@@ -14,7 +13,7 @@
 
   <div class="box">
     <div class="columns is-mobile is-multiline">
-      {% for book in all_books %}
+      {% for book in search_results %}
       <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
         <div class="card">
           <div class="card-image">
@@ -41,7 +40,7 @@
           </div>
           <footer class="card-footer">
             <a href="{% url 'readapi:edit_book' book.id %}" class="card-footer-item">Edit</a>
-            <a href="{% url 'readapi:delete_book' book.id %}" onclick="return confirm('Are you sure you want to delete {{book.title}}?')" class="card-footer-item">Delete</a>
+            <a href="{% url 'readapi:delete_book' book.id %}" class="card-footer-item">Delete</a>
           </footer>
         </div>
       </div>

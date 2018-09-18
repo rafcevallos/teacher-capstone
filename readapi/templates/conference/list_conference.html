@@ -3,7 +3,7 @@
 
 <div class="container has-text-centered">
   <div class="box">
-    <h1 class="title is-2">Your Conference Logs</h1>
+    <h1 class="title is-2">{{student.first_name}}'s Conference Logs</h1>
     <form action="{% url 'readapi:add_conference' %}" method="post">
       {% csrf_token %} {{ conference_form.as_p }}
       <input class="button is-primary is-rounded is-focused" type="submit" value="Add A Conference" />
