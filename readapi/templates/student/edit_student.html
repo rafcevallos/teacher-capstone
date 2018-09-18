@@ -15,6 +15,147 @@
             {% csrf_token %}
             {{ student_form.as_p }}
 
+            {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field }}
+            {% endfor %}
+
+{% for field in form.visible_fields %}
+
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Student</label>
+                </div>
+
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input is-focused" type="text" placeholder={{student_form.first_name}}> <span
+                                class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input is-focused  " type="text" placeholder={{student_form.last_name}}> <span
+                                class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="file has-name is-primary is-expanded">
+                        <label class="file-label">
+                            <input class="file-input" type="file" name="student_photo">
+                            <span class="file-cta">
+                                <span class="file-icon">
+                                    <i class="fas fa-upload"></i>
+                                </span>
+                                <span class="file-label is-expanded">
+                                    Update Photo
+                                </span>
+                            </span>
+                            <span class="file-name is-expanded">
+                                {{s.student_photo}}
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            {% comment %} End of Student Fields {% endcomment %}
+
+            {% comment %} Reading Level Dropdown {% endcomment %}
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Current Reading Level</label>
+                </div>
+
+                <div class="field-body">
+                    <div class="control is-expanded">
+                        <div class="select is-primary">
+                            <select class="is-hovered is-focused">
+                                <option>Select Reading Level</option>
+                                <option value={{student_form.reading_level.1}}></option>
+                                <option value={{student_form.reading_level.2}}></option>
+                                <option value={{student_form.reading_level.3}}></option>
+                                <option value={{student_form.reading_level.4}}></option>
+                                <option value={{student_form.reading_level.5}}></option>
+                                <option value={{student_form.reading_level.6}}></option>
+                                <option value={{student_form.reading_level.7}}></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% comment %} End of Reading Level Dropdown {% endcomment %}
+
+            {% comment %} Beginning of Skills {% endcomment %}
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Skills</label>
+                </div>
+
+                <div class="field-body">
+                    <div class="field is-grouped is-grouped-multiline">
+                        <p class="control">
+                            <a>{{student_form.skills.1}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.2}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.3}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.4}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.5}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.6}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.7}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.8}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.9}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.10}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.11}}</a>
+                        </p>
+                        <p class="control">
+                            <a>{{student_form.skills.12}}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% comment %} End of Skills {% endcomment %}
+
+            {% comment %} Beginning of Notes {% endcomment %}
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Notes</label>
+                </div>
+
+                <div class="field-body">
+                    <div class="field">
+                        <div class="control is-expanded">
+                            <textarea class="textarea is-focused" type="text" placeholder={{student_form.notes}}></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div> {% comment %} End of Notes {% endcomment %}
+
+
+
             {% comment %} Button {% endcomment %}
             <div>
                 <div class="field-body">
@@ -30,135 +171,6 @@
         </form>
     </div>
 </div>
-
+{% endfor %}
 {% endif %}
 {% endblock main %}
-
-
-{% comment %} <div class="field is-horizontal">
-    <div class="field-label is-normal">
-        <label class="label">Student</label>
-    </div>
-
-    <div class="field-body">
-        <div class="field">
-            <p class="control is-expanded has-icons-left">
-                <input class="input is-focused" type="text" placeholder={{student_form.first_name}} <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-                </span>
-            </p>
-        </div>
-
-        <div class="field">
-            <p class="control is-expanded has-icons-left">
-                <input class="input is-focused  " type="text" placeholder={{student_form.last_name}} <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-                </span>
-            </p>
-        </div>
-
-        <div class="file has-name is-primary is-expanded">
-            <label class="file-label">
-                <input class="file-input" type="file" name="student_photo">
-                <span class="file-cta">
-                    <span class="file-icon">
-                        <i class="fas fa-upload"></i>
-                    </span>
-                    <span class="file-label is-expanded">
-                        Update Photo
-                    </span>
-                </span>
-                <span class="file-name is-expanded">
-                    {{s.student_photo}}
-                </span>
-            </label>
-        </div>
-    </div>
-</div>
-{% comment %} End of Student Fields {% endcomment %}
-
-{% comment %} Reading Level Dropdown {% endcomment %}
-<div class="field is-horizontal">
-    <div class="field-label is-normal">
-        <label class="label">Current Reading Level</label>
-    </div>
-
-    <div class="field-body">
-        <div class="control is-expanded">
-            <div class="select is-primary">
-                <select class="is-hovered is-focused">
-                    <option>Select Reading Level</option>
-                    <option value={{student_form.reading_level.1}}></option>
-                    <option value={{student_form.reading_level.2}}></option>
-                    <option value={{student_form.reading_level.3}}></option>
-                    <option value={{student_form.reading_level.4}}></option>
-                    <option value={{student_form.reading_level.5}}></option>
-                    <option value={{student_form.reading_level.6}}></option>
-                    <option value={{student_form.reading_level.7}}></option>
-                </select>
-            </div>
-        </div>
-    </div>
-</div>
-{% comment %} End of Reading Level Dropdown {% endcomment %}
-
-{% comment %} Beginning of Skills {% endcomment %}
-<div class="field is-horizontal">
-    <div class="field-label is-normal">
-        <label class="label">Skills</label>
-    </div>
-
-    <div class="field-body">
-        <div class="field is-grouped is-grouped-multiline">
-            <p class="control">
-                <a>{{student_form.skills.1}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.2}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.3}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.4}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.5}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.6}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.7}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.8}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.9}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.10}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.11}}</a>
-            </p>
-            <p class="control">
-                <a>{{student_form.skills.12}}</a>
-            </p>
-        </div>
-    </div>
-</div>
-{% comment %} End of Skills {% endcomment %}
-
-{% comment %} Beginning of Notes {% endcomment %}
-<div class="field is-horizontal">
-    <div class="field-label is-normal">
-        <label class="label">Notes</label>
-    </div>
-
-    <div class="field-body">
-        <div class="field">
-            <div class="control is-expanded">
-                <textarea class="textarea is-focused" type="text" placeholder={{student_form.notes}} </textarea> </div>
-                    </div> </div> </div> {% comment %} End of Notes {% endcomment %}
