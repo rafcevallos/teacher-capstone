@@ -1,57 +1,67 @@
 {% load static %}
 
-<nav class="navbar is-link" role="navigation" aria-label="dropdownnavigation">
+<nav class="navbar is-info is-fixed-top" role="navigation" aria-label="dropdownnavigation">
     <div class="navbar-brand">
-        <a class="navbar-item">
+        <a class="navbar-item" href="{% url 'readapi:index' %}">
+            <img src="{% static '/great_transparent.png' %}" alt="G.R.E.A.T: Guided Reading Elementary Assessment Tracker" width="150"
+                height="28">
         </a>
-        <div class="navbar-start">
-            {% if user.is_authenticated %}
-            <a class="navbar-item" href="{% url 'readapi:index' %}"><img src="https://png.icons8.com/color/1600/school.png"></a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-start">
+        {% if user.is_authenticated %}
+        <a class="navbar-item" href="{% url 'readapi:index' %}">
+            <img src="https://png.icons8.com/color/1600/school.png" class="is-square">
+        </a>
+
+        <form action="{% url 'readapi:index' %}" class="navbar-item search_bar">
+            <input class="input is-expanded is-danger is-loading is-focused is-rounded" type="text" placeholder="Search for a reading level"
+                id="search" name="search_terms">
+        </form>
 
 
-            <form action="{% url 'readapi:index' %}" class="navbar-item search_bar">
-                <input class="input is-expanded is-danger is-loading is-focused is-rounded" type="text" placeholder="Search for a reading level"
-                    id="search" name="search_terms">
-            </form>
+        <a class="navbar-item is-size-5" href="{% url 'readapi:list_book' %}">Books</a>
+        <a class="navbar-item is-size-5" href="{% url 'readapi:add_conference' %}">Conference Log</a>
 
-
-            <a class="navbar-item" href="{% url 'readapi:list_book' %}">Books</a>
-            <a class="navbar-item" href="{% url 'readapi:add_conference' %}">Conference Log</a>
-
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">Reading Levels</a>
-                <div class="navbar-dropdown is-boxed">
-                    <a class="navbar-item" href="{% url 'readapi:list_skill' pk=1 %}">Level A</a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="{% url 'readapi:list_skill' pk=2 %}">Level B</a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="{% url 'readapi:list_skill' pk=3 %}">Level C</a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="{% url 'readapi:list_skill' pk=4 %}">Level D</a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="{% url 'readapi:list_skill' pk=5 %}">Level E</a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="{% url 'readapi:list_skill' pk=6 %}">Level F</a>
-                </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-size-5">Reading Levels</a>
+            <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="{% url 'readapi:list_skill' pk=1 %}">Level A</a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="{% url 'readapi:list_skill' pk=2 %}">Level B</a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="{% url 'readapi:list_skill' pk=3 %}">Level C</a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="{% url 'readapi:list_skill' pk=4 %}">Level D</a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="{% url 'readapi:list_skill' pk=5 %}">Level E</a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="{% url 'readapi:list_skill' pk=6 %}">Level F</a>
             </div>
+        </div>
 
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link" href="#"> Hello, {{ user.username }}!</a>
-                <div class="navbar-dropdown is-boxed">
-                    <a class="navbar-item" href="#">My Profile</a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item" href="{% url 'readapi:logout' %}">Logout</a>
-                </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link is-size-5" href="#"> Hello, {{ user.username }}!</a>
+            <div class="navbar-dropdown is-boxed">
+                <a class="navbar-item" href="#">My Profile</a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="{% url 'readapi:logout' %}">Logout</a>
             </div>
-            {% else %}
-            <a class="navbar-item" href="{% url 'readapi:login' %}">Login</a>
-            <a class="navbar-item" href="{% url 'readapi:register' %}">Register</a>
         </div>
-        {% endif %}
-        <div class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-        </div>
+        {% else %}
+        <a class="navbar-item" href="{% url 'readapi:login' %}">Login</a>
+        <a class="navbar-item" href="{% url 'readapi:register' %}">Register</a>
+    </div>
+    {% endif %}
+    <div class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+    </div>
     </div>
 </nav>
