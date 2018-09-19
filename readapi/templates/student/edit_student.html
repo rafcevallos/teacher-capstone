@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load widget_tweaks %}
 
 {% block main %}
 {% if user.is_authenticated %}
@@ -13,13 +14,17 @@
     <div class="box">
         <form id="student_form" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            {{ student_form.as_p }}
+            <!-- {{ student_form.as_p }} -->
 
-            {% for hidden_field in form.hidden_fields %}
-            {{ hidden_field }}
-            {% endfor %}
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label">Teacher</label>
+                </div>
 
-{% for field in form.visible_fields %}
+                <div class="field-body">
+                {% render_field student_form.teacher class="form-control field is-expanded is-primary is-focused" %}
+                </div>
+            </div>
 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
@@ -29,8 +34,8 @@
                 <div class="field-body">
                     <div class="field">
                         <p class="control is-expanded has-icons-left">
-                            <input class="input is-focused" type="text" placeholder={{student_form.first_name}}> <span
-                                class="icon is-small is-left">
+                            {% render_field student_form.first_name class="form-control field is-expanded input is-focused" placeholder=student_form.first_name.label %}
+                            <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
                         </p>
@@ -38,63 +43,64 @@
 
                     <div class="field">
                         <p class="control is-expanded has-icons-left">
-                            <input class="input is-focused  " type="text" placeholder={{student_form.last_name}}> <span
-                                class="icon is-small is-left">
+                            {% render_field student_form.last_name class="form-control field is-expanded input is-focused" placeholder=student_form.last_name.label %}
+                            <span class="icon is-small is-left">
                                 <i class="fas fa-user"></i>
                             </span>
                         </p>
-                    </div>
-
-                    <div class="file has-name is-primary is-expanded">
-                        <label class="file-label">
-                            <input class="file-input" type="file" name="student_photo">
-                            <span class="file-cta">
-                                <span class="file-icon">
-                                    <i class="fas fa-upload"></i>
-                                </span>
-                                <span class="file-label is-expanded">
-                                    Update Photo
-                                </span>
-                            </span>
-                            <span class="file-name is-expanded">
-                                {{s.student_photo}}
-                            </span>
-                        </label>
                     </div>
                 </div>
             </div>
             {% comment %} End of Student Fields {% endcomment %}
 
-            {% comment %} Reading Level Dropdown {% endcomment %}
+            {% comment %} Beginning of Photo Field {% endcomment %}
             <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Current Reading Level</label>
-                </div>
+                    <div class="field-label is-normal">
+                        <label class="label">Student Photo</label>
+                    </div>
 
                 <div class="field-body">
-                    <div class="control is-expanded">
-                        <div class="select is-primary">
-                            <select class="is-hovered is-focused">
-                                <option>Select Reading Level</option>
-                                <option value={{student_form.reading_level.1}}></option>
-                                <option value={{student_form.reading_level.2}}></option>
-                                <option value={{student_form.reading_level.3}}></option>
-                                <option value={{student_form.reading_level.4}}></option>
-                                <option value={{student_form.reading_level.5}}></option>
-                                <option value={{student_form.reading_level.6}}></option>
-                                <option value={{student_form.reading_level.7}}></option>
-                            </select>
-                        </div>
+                    <div class="file has-name is-primary is-expanded">
+                        <label class="file-label">
+                            <input class="file-input" type="file" name="student_photo">
+                                <span class="file-cta">
+                                    <span class="file-icon">
+                                        <i class="fas fa-upload"></i>
+                                    </span>
+                                        <span class="file-label is-expanded">
+                                            Update Photo
+                                        </span>
+                                </span>
+                                    <span class="file-name is-expanded">
+                                        {{s.student_photo}}
+                                    </span>
+                        </label>
                     </div>
                 </div>
             </div>
-            {% comment %} End of Reading Level Dropdown {% endcomment %}
+            {% comment %} End of Photo Fields {% endcomment %}
 
-            {% comment %} Beginning of Skills {% endcomment %}
+            {% comment %} Beginning of Reading Level Fields {% endcomment %}
             <div class="field is-horizontal">
-                <div class="field-label is-normal">
-                    <label class="label">Skills</label>
-                </div>
+                    <div class="field-label is-normal">
+                        <label class="label">Reading Level</label>
+                    </div>
+
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="select is-info is-focused">
+                            {% render_field student_form.reading_level class="form-control is-expanded input is-focused" placeholder=student_form.reading_level.label %}
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            {% comment %} End of Reading Level Fields {% endcomment %}
+
+            {% comment %} Beginning of Skills Fields {% endcomment %}
+            <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">Skills</label>
+                    </div>
 
                 <div class="field-body">
                     <div class="field is-grouped is-grouped-multiline">
@@ -148,22 +154,27 @@
                 <div class="field-body">
                     <div class="field">
                         <div class="control is-expanded">
-                            <textarea class="textarea is-focused" type="text" placeholder={{student_form.notes}}></textarea>
+                            <textarea class="textarea is-focused" type="text" placeholder={{student_form.notes}}</textarea>
                         </div>
                     </div>
                 </div>
-            </div> {% comment %} End of Notes {% endcomment %}
-
-
+            </div>
+            {% comment %} End of Notes {% endcomment %}
 
             {% comment %} Button {% endcomment %}
-            <div>
-                <div class="field-body">
-                    <div class="field">
-                        <div class="control">
-                            <button class="button is-primary" type="submit" name="submit" value="Save" />
-                            Update
-                            </button>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label"></label>
+                    </div>
+
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary" type="submit" name="submit" value="Save">
+                                    Update
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -171,6 +182,6 @@
         </form>
     </div>
 </div>
-{% endfor %}
+
 {% endif %}
 {% endblock main %}
