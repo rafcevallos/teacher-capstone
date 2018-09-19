@@ -15,22 +15,22 @@
             <form id="student_form" method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
                 <!-- {{ student_form.as_p }} -->
-    
+
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Teacher</label>
                     </div>
-    
+
                     <div class="field-body">
                     {% render_field student_form.teacher class="form-control field is-expanded is-primary is-focused" %}
                     </div>
                 </div>
-    
+
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Student</label>
                     </div>
-    
+
                     <div class="field-body">
                         <div class="field">
                             <p class="control is-expanded has-icons-left">
@@ -40,7 +40,7 @@
                                 </span>
                             </p>
                         </div>
-    
+
                         <div class="field">
                             <p class="control is-expanded has-icons-left">
                                 {% render_field student_form.last_name class="form-control field is-expanded input is-focused" placeholder=student_form.last_name.label %}
@@ -52,13 +52,13 @@
                     </div>
                 </div>
                 {% comment %} End of Student Fields {% endcomment %}
-    
+
                 {% comment %} Beginning of Photo Field {% endcomment %}
                 <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Student Photo</label>
                         </div>
-    
+
                     <div class="field-body">
                         <div class="file has-name is-primary is-expanded">
                             <label class="file-label">
@@ -79,13 +79,13 @@
                     </div>
                 </div>
                 {% comment %} End of Photo Fields {% endcomment %}
-    
+
                 {% comment %} Beginning of Reading Level Fields {% endcomment %}
                 <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Reading Level</label>
                         </div>
-    
+
                         <div class="field-body">
                             <div class="field">
                                 <div class="select is-info is-focused">
@@ -95,13 +95,13 @@
                         </div>
                 </div>
                 {% comment %} End of Reading Level Fields {% endcomment %}
-    
+
                 {% comment %} Beginning of Skills Fields {% endcomment %}
                 <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label">Skills</label>
                         </div>
-    
+
                     <div class="field-body">
                         <div class="field is-grouped is-grouped-multiline">
                             <p class="control">
@@ -144,13 +144,13 @@
                     </div>
                 </div>
                 {% comment %} End of Skills {% endcomment %}
-    
+
                 {% comment %} Beginning of Notes {% endcomment %}
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Notes</label>
                     </div>
-    
+
                     <div class="field-body">
                         <div class="field">
                             <div class="control is-expanded">
@@ -160,14 +160,14 @@
                     </div>
                 </div>
                 {% comment %} End of Notes {% endcomment %}
-    
+
                 {% comment %} Button {% endcomment %}
-    
+
                     <div class="field is-horizontal">
                         <div class="field-label is-normal">
                             <label class="label"></label>
                         </div>
-    
+
                         <div class="field-body">
                             <div class="field">
                                 <div class="control">
@@ -182,6 +182,6 @@
             </form>
         </div>
     </div>
-    
+
     {% endif %}
     {% endblock main %}
