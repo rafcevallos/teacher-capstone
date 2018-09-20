@@ -16,16 +16,23 @@
             {% csrf_token %}
             <!-- {{ student_form.as_p }} -->
 
+            <!-- Beginning of Teacher Fields -->
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">Teacher</label>
                 </div>
 
                 <div class="field-body">
-                {% render_field student_form.teacher class="form-control field is-expanded is-primary is-focused" %}
+                    <div class="field">
+                        <div class="select is-info is-focused">
+                            {% render_field student_form.teacher class="form-control is-expanded is-primary is-focused" placeholder=student_form.teacher.label %}
+                        </div>
+                    </div>
                 </div>
             </div>
+            <!-- End of Teacher Fields -->
 
+            <!-- Beginning of Student Fields -->
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">Student</label>
@@ -51,9 +58,9 @@
                     </div>
                 </div>
             </div>
-            {% comment %} End of Student Fields {% endcomment %}
+            <!-- End of Student Fields -->
 
-            {% comment %} Beginning of Photo Field {% endcomment %}
+            <!-- Beginning of Photo Field -->
             <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">Student Photo</label>
@@ -78,29 +85,29 @@
                     </div>
                 </div>
             </div>
-            {% comment %} End of Photo Fields {% endcomment %}
+            <!-- End of Photo Fields -->
 
-            {% comment %} Beginning of Reading Level Fields {% endcomment %}
+            <!-- Beginning of Reading Level Fields -->
             <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Reading Level</label>
-                    </div>
+                <div class="field-label is-normal">
+                    <label class="label">Reading Level</label>
+                </div>
 
-                    <div class="field-body">
-                        <div class="field">
-                            <div class="select is-info is-focused">
+                <div class="field-body">
+                    <div class="field">
+                        <div class="select is-info is-focused">
                             {% render_field student_form.reading_level class="form-control is-expanded input is-focused" placeholder=student_form.reading_level.label %}
-                            </div>
                         </div>
                     </div>
+                </div>
             </div>
-            {% comment %} End of Reading Level Fields {% endcomment %}
+            <!-- =End of Reading Level Fields -->
 
-            {% comment %} Beginning of Skills Fields {% endcomment %}
+            <!-- Beginning of Skills Fields -->
             <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Skills</label>
-                    </div>
+                <div class="field-label is-normal">
+                    <label class="label">Skills</label>
+                </div>
 
                 <div class="field-body">
                     <div class="field is-grouped is-grouped-multiline">
@@ -143,9 +150,9 @@
                     </div>
                 </div>
             </div>
-            {% comment %} End of Skills {% endcomment %}
+            <!-- End of Skills -->
 
-            {% comment %} Beginning of Notes {% endcomment %}
+            <!-- Beginning of Notes -->
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
                     <label class="label">Notes</label>
@@ -159,14 +166,13 @@
                     </div>
                 </div>
             </div>
-            {% comment %} End of Notes {% endcomment %}
+            <!-- End of Notes -->
 
-            {% comment %} Button {% endcomment %}
-
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label"></label>
-                    </div>
+            <!-- Button -->
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                    <label class="label"></label>
+                </div>
 
                     <div class="field-body">
                         <div class="field">
