@@ -16,28 +16,33 @@
         </div>
     </div>
 
-    <div class="box">
-        <div class="columns is-mobile is-multiline">
-            <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
-                <div class="card">
-                    <div class="card-image">
+    <body>
+        <div class="box">
+            <!-- <section class="hero is-fullheight is-default is-bold">
+                <div class="hero-head">
+                </div>
+                <div class="hero-body is-paddingless"> -->
+            <div class="container">
+                <div class="columns is-vcentered">
+                    <div class="column is-5 has-background-success">
                         <figure class="image is-square">
-                            <img src="{{book.book_photo.url}}" alt="book_photo">
+                            <img src="{{book.book_photo.url}}" alt="Book Photo">
                         </figure>
                     </div>
-                    {% comment %} <div class="media-content">
-                        <p class="title is-5 has-text-centered">{{book.title}}</p>
-                    </div> {% endcomment %}
-                    <div class="content has-text-centered">
-                        <h3>Level: {{book.level}}</h3>
-                        <p>Word Count: {{book.word_count}}</p>
-                        <p>Genre: {{book.genre}}</p>
-                        <p>Unit: {{book.unit}}</p>
-                        <p>Notes: {{book.notes}}</p>
+                    <div class="column">
+                        <div class="content">
+                            <h3>Level: {{book.level}}</h3>
+                            <h4>Word Count: {{book.word_count}}</h4>
+                            <h4>Genre: {{book.genre}}</h4>
+                            <h4>Unit: {{book.unit}}</h4>
+                            <h4>Notes: {{book.notes}}</h4>
+                        </div>
                     </div>
                 </div>
+                <!-- </div>
+                </div>
+            </section> -->
             </div>
-        </div>
-    </div>
+    </body>
 </div>
 {% endblock %}
