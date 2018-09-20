@@ -26,7 +26,7 @@ def edit_conference(request, pk):
 
     elif request.method == "POST":
         print("POST")
-        # Here's where we post upstudent,d info to the user
+        # Here's where we post upstudent,d info to the conference
         conference = ConferenceLog.objects.get(pk=pk)
         conference_form = ConferenceForm(
             request.POST, instance=conference)
@@ -35,4 +35,5 @@ def edit_conference(request, pk):
         if conference_form.is_valid():
             conference_form.save()
 
-            return redirect(reverse('readapi:list_conference'))
+            return redirect(reverse('readapi:student_detail', args=(conference.student.id,)))
+            # args expects a tuple of values that are iterable.  Without a comma, it won't register it as a tuple

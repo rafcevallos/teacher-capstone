@@ -33,4 +33,4 @@ def edit_student(request, pk):
         if student_form.is_valid():
             student_form.save()
 
-            return redirect(reverse('readapi:index'))
+            return redirect(reverse('readapi:student_detail', args=(s.id,)))

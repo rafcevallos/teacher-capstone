@@ -20,7 +20,7 @@ def edit_book(request, pk):
 
     elif request.method == "POST":
         print("POST")
-        # Here's where we post updated info to the user
+        # Here's where we post updated info to the book
         book = Book.objects.get(pk=pk)
         book_form = BookForm(request.POST, instance=book)
         print('HERE IS THE STRING')

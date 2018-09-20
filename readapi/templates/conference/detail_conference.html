@@ -14,59 +14,63 @@
                         <input class="button is-warning is-rounded is-focused" type="submit" value="Edit Conference" />
                     </a>
 
-                    {% comment %} <form action="{% url 'readapi:delete_conference' %}" method="post"> {% endcomment %}
-                        {% comment %} {% csrf_token %} {{ conference_form.as_p }} {% endcomment %}
-                        <input class="button is-danger is-rounded is-focused" type="submit" value="Delete Conference" />
-                        {% comment %} </form> {% endcomment %}
+                    <a href="{% url 'readapi:delete_conference' conference.id %}" method="POST">
+                        <input class="button is-danger is-rounded is-focused" type="submit" onclick="return confirm('Are you sure you want to delete this conference?')"
+                            value="Delete Conference" />
+                    </a>
                 </div>
             </div>
         </section>
     </div>
 
-    <div class="box">
-        <div class="columns is-mobile is-multiline">
-            <div class="column is-one-fifth-desktop is-half-mobile is-one-fourth-tablet">
-                <div class="card">
-                    <div class="card-image">
+
+    <body>
+        <div class="box">
+            <!-- <section class="hero is-fullheight is-default is-bold">
+                    <div class="hero-head">
+                    </div>
+                    <div class="hero-body is-paddingless"> -->
+            <div class="container">
+                <div class="columns is-vcentered">
+                    <div class="column is-5 has-background-success">
                         <figure class="image is-square">
-                            <img src="{{conference.book.book_photo.url}}" alt="book_photo">
+                            <img src="{{conference.book.book_photo.url}}" alt="Book Photo">
                         </figure>
                     </div>
+                    <div class="column">
+                        <div class="content">
+                            <div class="media-content">
+                                <p class="title is-5 has-text-centered">
+                                    <a href="{% url 'readapi:book_detail' conference.book.id %}">
+                                        {{conference.book.title}}
+                                    </a>
+                                </p>
+                            </div>
+                            <h3>Level: {{conference.book.level}}</h3>
+                            <h3>Strategies:</h3>
 
-                    <div class="media-content">
-                        <p class="title is-5 has-text-centered">
-                            <a href="{% url 'readapi:book_detail' conference.book.id %}">
-                                {{conference.book.title}}
-                            </a>
-                        </p>
+                            {% for strategy in conference.strategy.all %}
+
+                            <p>{{strategy.name}}</p>
+                            {% endfor %}
+
+                            <h3>Observations:</h3>
+
+                            {% for observation in conference.observation.all %}
+
+                            <p>{{observation.name}}</p>
+                            {% endfor %}
+
+                            <h3>Comments:</h3>
+                            {{conference.comments}}
+                        </div>
                     </div>
-
-                    <div class="content has-text-centered">
-                        <h6>Level: {{conference.book.level}}</h6>
-                        <h6>Strategies:</h6>
-
-                        {% for strategy in conference.strategy.all %}
-
-                        <p>{{strategy.name}}</p>
-                        {% endfor %}
-
-                        <h6>Observations:</h6>
-
-                        {% for observation in conference.observation.all %}
-
-                        <p>{{observation.name}}</p>
-                        {% endfor %}
-
-                        <p>Comments: {{conference.comments}}</p>
-                    </div>
-
-                    {% comment %} <footer class="card-footer">
-                        <a href="#" class="card-footer-item">Edit</a>
-                        <a href="#" class="card-footer-item">Delete</a>
-                    </footer> {% endcomment %}
                 </div>
+                <!-- </div>
+                    </div>
+                </section> -->
             </div>
-        </div>
-    </div>
+    </body>
 </div>
+
 {% endblock %}
