@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.template import RequestContext
 from readapi.models import ConferenceLog
 from readapi.forms import ConferenceForm
@@ -14,7 +15,7 @@ def add_conference(request):
         if conference_form.is_valid():
             new_conference = conference_form.save()
             new_conference.save()
-            return redirect('readapi:index')
+            return redirect(reverse('readapi:student_detail', args=(new_conference.student.id,)))
     else:
         conference_form = ConferenceForm()
     return render(request, 'conference/add_conference.html', {'conference_form': conference_form})

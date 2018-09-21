@@ -22,8 +22,8 @@
                     </div>
                     <div class="hero-body is-paddingless"> {% endcomment %}
                         <div class="container">
-                            <div class="columns is-vcentered">
-                                <div class="column is-5 has-background-grey-dark">
+                            <div class="columns">
+                                <div class="column is-4">
                                     <figure class="image is-square">
                                         <img src="{{student.student_photo.url}}" alt="Student Photo">
                                     </figure>
@@ -39,7 +39,7 @@
                                             {% endfor %}
                                         </h3>
                                         <h3 class="student-notes">Teacher Notes:</h3>
-                                        <p>{{student.notes}}</p>
+                                        <p class="is-size-5">{{student.notes}}</p>
                                     </div>
                                 </div>
                             </div>
