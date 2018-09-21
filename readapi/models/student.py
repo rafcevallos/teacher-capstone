@@ -10,8 +10,6 @@ Inclues the following:
     -last_name is a string defaulted to ""
     -student_photo is an image field for uploading student photos
     -notes is a string text field defaulted to ""
-    -
-
 """
 
 class Student(models.Model):

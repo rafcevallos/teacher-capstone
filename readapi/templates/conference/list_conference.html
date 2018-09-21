@@ -2,11 +2,12 @@
 {% if user.is_authenticated %}
 
 <div class="container has-text-centered">
+  <div class="box has-background-warning">
   <div class="box">
     <h1 class="title is-2">{{student.first_name}}'s Conference Logs</h1>
     <form action="{% url 'readapi:add_conference' %}" method="post">
       {% csrf_token %} {{ conference_form.as_p }}
-      <input class="button is-primary is-rounded is-focused" type="submit" value="Add A Conference" />
+      <input class="button is-success is-rounded is-focused" type="submit" value="Add A Conference" />
     </form>
   </div>
 
@@ -46,6 +47,7 @@
       {% endfor %}
     </div>
   </div>
+</div>
 </div>
 
 {% else %}
